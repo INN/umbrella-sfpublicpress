@@ -1,0 +1,3 @@
+[submodule "wp-content/themes/largo"]
+	path = wp-content/themes/largo
+	url = git@github.com:INN/Largo.git
