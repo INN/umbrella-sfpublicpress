@@ -37,3 +37,21 @@ body {
 		color: @black;
 	}
 }
+p.has-drop-cap:not(:focus)::first-letter {
+	// these are calculated to have font size of 100px, line height 120px, at paragraph font size 20px line height 1.8rem;
+    color: @black;
+    font-size: 5.0em;
+    font-weight: 700;
+    line-height: .4; // different browsers calculate this differently
+
+    padding-top: 0.2em;
+    padding-right: 0.2em; // so we replace the line height with padding based on the font size
+
+    margin-bottom: 0;
+    margin-right: 0;
+    
+	box-sizing: border-box;
+	height: 5em;
+	text-align: center;
+	display: block;
+}
