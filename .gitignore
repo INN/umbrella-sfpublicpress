@@ -119,4 +119,4 @@ wp-content/debug.log
 # do version-control the child theme we care about
 # add a line here that looks like this:
 # !/wp-content/themes/example-theme-directory
-!/wp-content/themes/example-theme-directory
+!/wp-content/themes/sfpublicpress
