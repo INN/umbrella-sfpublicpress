@@ -1,0 +1,21 @@
+.btn {
+    color: @white;
+    background: @black;
+    font-family: @font-header;
+    font-size: 18px;
+    line-height: @measure + 1rem;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 5px 20px;
+    &:hover {
+        background: @dark-orange;
+        color: @white;
+    }
+    &.btn-green {
+        background: @green;
+        &:hover {
+            background: @dark-green;
+        }
+    }
+}

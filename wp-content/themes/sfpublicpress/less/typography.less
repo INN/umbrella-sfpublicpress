@@ -7,6 +7,9 @@ body {
         font-size: 72px;
         line-height: 5rem;
     }
+    a {
+        color: @black;
+    }
 	p {
         color: @gray;
         font-size: 20px;
@@ -27,6 +30,12 @@ body {
                 font-family: @font-header;
                 color: @black;
                 text-transform: uppercase;
+                .url {
+                    text-decoration: none;
+                    &:hover {
+                        color: @dark-orange;
+                    }
+                }
             }
         }
     }
@@ -35,7 +44,28 @@ body {
 	h1, h2, h3, h4, h5, h6 {
 		font-family: @font-header;
 		color: @black;
-	}
+    }
+    a {
+        &:hover,
+        &:active,
+        &:focus {
+            color: @dark-orange;
+            text-decoration: none;
+        }
+    }
+    .single article & {
+        a {
+            text-decoration: underline;
+            text-decoration-color: @blue;
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration-color: @black;
+                text-decoration: underline;
+                color: @black;
+            }
+        }
+    }
 }
 p.has-drop-cap:not(:focus)::first-letter {
 	// these are calculated to have font size of 100px, line height 120px, at paragraph font size 20px line height 1.8rem;
@@ -49,7 +79,7 @@ p.has-drop-cap:not(:focus)::first-letter {
 
     margin-bottom: 0;
     margin-right: 0;
-    
+
 	box-sizing: border-box;
 	height: 5em;
 	text-align: center;
