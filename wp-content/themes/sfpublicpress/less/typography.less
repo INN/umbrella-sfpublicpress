@@ -44,12 +44,25 @@ body {
     }
     a {
         color: @black;
-        text-decoration: underline;
-        text-decoration-color: @blue;
         &:hover,
         &:active,
         &:focus {
-            text-decoration-color: @black;
+            color: @dark-orange;
+            text-decoration: none;
+        }
+    }
+    .single article & {
+        a {
+            color: @black;
+            text-decoration: underline;
+            text-decoration-color: @blue;
+            &:hover,
+            &:active,
+            &:focus {
+                text-decoration-color: @black;
+                text-decoration: underline;
+                color: @black;
+            }
         }
     }
 }
