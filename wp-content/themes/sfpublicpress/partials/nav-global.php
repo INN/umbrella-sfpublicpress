@@ -36,28 +36,29 @@ if (
 				?>
 				<div class="nav-right">
 					<?php
-					/* Check to display Social Media Icons */
-					if ( of_get_option( 'show_header_social') ) { ?>
-						<ul id="header-social" class="social-icons visible-desktop">
-							<?php largo_social_links(); ?>
-						</ul>
-					<?php }
-					/* Check to display Donate Button */
-					if ( of_get_option( 'show_donate_button') ) {
-						largo_donate_button();
-					}
+						if ( ! is_search() ) {
+							?>
+								<div id="header-search">
+									<form class="form-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+										<div class="input-append">
+											<input type="text" placeholder="<?php _e('Search', 'largo'); ?>" class="input-medium appendedInputButton search-query" value="" name="s" /><button type="submit" class="search-submit btn"><?php _e('GO', 'largo'); ?></button>
+										</div>
+									</form>
+								</div>
+							<?php
+						}
 
-					if ( ! is_search() ) {
-						?>
-							<div id="header-search">
-								<form class="form-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-									<div class="input-append">
-										<input type="text" placeholder="<?php _e('Search', 'largo'); ?>" class="input-medium appendedInputButton search-query" value="" name="s" /><button type="submit" class="search-submit btn"><?php _e('GO', 'largo'); ?></button>
-									</div>
-								</form>
-							</div>
-						<?php
-					}
+						/* Check to display Donate Button */
+						if ( of_get_option( 'show_donate_button') ) {
+							largo_donate_button();
+						}
+
+						/* Check to display Social Media Icons */
+						if ( of_get_option( 'show_header_social') ) { ?>
+							<ul id="header-social" class="social-icons visible-desktop">
+								<?php largo_social_links(); ?>
+							</ul>
+						<?php }
 					?>
 				<!-- END Header Search -->
 				</div>
