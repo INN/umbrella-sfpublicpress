@@ -1,0 +1,57 @@
+body {
+    font-family: @font-body;
+    color: @gray;
+    .entry-title {
+        color: @black;
+        font-family: @font-header;
+        font-size: 72px;
+        line-height: 5rem;
+    }
+	p {
+        color: @gray;
+        font-size: 20px;
+        line-height: 1.8rem;
+    }
+    .widgettitle {
+        font-family: @font-header;
+        color: @black;
+    }
+    .byline {
+        .by-author {
+            .by {
+                font-family: @font-body;
+                color: @gray;
+                text-transform: lowercase;
+            }
+            .author {
+                font-family: @font-header;
+                color: @black;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+.entry-content {
+	h1, h2, h3, h4, h5, h6 {
+		font-family: @font-header;
+		color: @black;
+	}
+}
+p.has-drop-cap:not(:focus)::first-letter {
+	// these are calculated to have font size of 100px, line height 120px, at paragraph font size 20px line height 1.8rem;
+    color: @black;
+    font-size: 5.0em;
+    font-weight: 700;
+    line-height: .4; // different browsers calculate this differently
+
+    padding-top: 0.2em;
+    padding-right: 0.2em; // so we replace the line height with padding based on the font size
+
+    margin-bottom: 0;
+    margin-right: 0;
+    
+	box-sizing: border-box;
+	height: 5em;
+	text-align: center;
+	display: block;
+}
