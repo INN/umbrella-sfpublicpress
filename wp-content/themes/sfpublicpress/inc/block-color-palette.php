@@ -112,4 +112,4 @@ function sfpublicpress_block_colors_styles() {
 		echo '</style>';
 	}
 }
-add_action( 'wp_print_styles', 'sfpublicpress_block_colors_styles' );
+add_action( 'wp_head', 'sfpublicpress_block_colors_styles', 10 );
