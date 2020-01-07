@@ -1,0 +1,41 @@
+// local design tokens
+@globalnav-text: @black;
+@globalnav-text-hover: @white;
+@globalnav-background: @orange;
+@globalnav-background-hover: @dark-orange;
+@globalnav-font-size: 18px;
+@globalnav-font: @font-header;
+
+
+.global-nav {
+	height: @navbarHeight;
+	background-color: @globalnav-background;
+	font-family: @globalnav-font;
+
+	ul {
+		font-size: @globalnav-font-size;
+		a {
+			color: @globalnav-text;
+			background-color: transparent;
+			&:hover {
+				color: @globalnav-text-hover;
+				background-color: @globalnav-background-hover;
+			}
+		}
+	}
+}
+#menu-global-navigation {
+	li {
+		margin: 0;
+		padding: 0;
+	}
+	li a {
+		margin: 0;
+		line-height: @navbarHeight;
+		padding-left: 1.2em;
+		padding-right: 1.2em;
+	}
+	li + li {
+		border-left: 1px solid @globalnav-text;
+	}
+}
