@@ -23,11 +23,6 @@ function sfpublicpress_block_colors() {
 			'slug' => 'black',
 			'color' => '#000',
         ),
-        array(
-			'name' => __( 'Black 2', 'sfpublicpress' ),
-			'slug' => 'black2',
-			'color' => '#151A1F',
-		),
 		array(
 			'name' => __( 'Gray', 'sfpublicpress' ),
 			'slug' => 'gray',
@@ -48,11 +43,6 @@ function sfpublicpress_block_colors() {
 			'slug' => 'brown',
 			'color' => '#77726E',
 		),
-		array(
-			'name' => __( 'Dark Brown', 'sfpublicpress' ),
-			'slug' => 'darkbrown',
-			'color' => '#5C524D',
-        ),
         array(
 			'name' => __( 'Light Brown', 'sfpublicpress' ),
 			'slug' => 'lightbrown',
