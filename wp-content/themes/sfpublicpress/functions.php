@@ -17,7 +17,8 @@ define( 'SHOW_CATEGORY_RELATED_TOPICS', false );
 function largo_child_require_files() {
 
 	$includes = array(
-        '/inc/enqueue.php',
+		'/inc/enqueue.php',
+		'/inc/block-color-palette.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
