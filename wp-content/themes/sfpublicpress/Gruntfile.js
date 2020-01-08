@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   
     var cssLessFiles = {
       'css/child-style.css': 'less/style.less',
+      'homepages/assets/css/homepage.css': 'homepages/assets/less/homepage.less'
     };
   
     grunt.initConfig({
@@ -37,6 +38,7 @@ module.exports = function(grunt) {
         less: {
           files: [
             'less/*.less',
+            'homepages/assets/less/*.less',
           ],
           tasks: [
             'less:compile',

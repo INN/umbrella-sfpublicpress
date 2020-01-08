@@ -1,0 +1,57 @@
+@import (reference) "../../../less/variables.less";
+@import (reference) "../../../less/mixins.less";
+
+#top-story {
+    border-bottom: 0;
+    margin-bottom: @measure + @measure;
+    .post-image-top-term-container {
+        .img {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    h2 {
+        margin: @measure 0;
+        a {
+            font-family: @font-header;
+            font-size: 60px;
+            line-height: 4.5rem;
+            color: @orange;
+            &:hover {
+                text-decoration: none;
+                color: @black;
+            }
+        }
+    }
+    .excerpt {
+        p {
+            font-size: 18px;
+        }
+    }
+}
+
+.widget-area {
+    display: flex;
+    border-bottom: 1px solid @light-gray;
+    .widget-area-left {
+        display: inline-block;
+        width: 70%;
+        padding-right: 40px;
+    }
+    .widget-area-right {
+        display: inline-block;
+        width: 30%;
+        padding-left: 40px;
+    }
+    @media (max-width: 769px) {
+        flex-direction: column;
+        .widget-area-left,
+        .widget-area-right {
+            width: 100%;
+            padding: 0;
+            border: 0;
+        }
+    }
+}
