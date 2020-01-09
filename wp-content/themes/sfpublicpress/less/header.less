@@ -7,9 +7,12 @@
 @globalnav-font: @font-header;
 
 
+.global-nav-bg,
 .global-nav {
 	height: @navbarHeight;
 	background-color: @globalnav-background;
+}
+.global-nav {
 	font-family: @globalnav-font;
 
 	ul {
@@ -27,21 +30,6 @@
 		margin: 0;
 		line-height: @navbarHeight;
 		padding: 0 0.5em;
-	}
-}
-#menu-global-navigation {
-	li {
-		margin: 0;
-		padding: 0;
-	}
-	li a {
-		margin: 0;
-		line-height: @navbarHeight;
-		padding-left: 1.2em;
-		padding-right: 1.2em;
-	}
-	li + li {
-		border-left: 1px solid @globalnav-text;
 	}
 }
 #header-search {
@@ -91,10 +79,39 @@
 }
 #header-search + .donate-btn {
 	margin-left: 0;
-	border-left: 1px solid @globalnav-text;
-	background-color: @globalnav-text;
-	color: @globalnav-text-hover;
 	font-size: @globalnav-font-size;
+	border-left: 1px solid @globalnav-text;
+	border-right: 1px solid @globalnav-text;
+}
+.donate-btn {
+	.btn();
+}
+
+#menu-global-navigation,
+.global-nav .nav-right ul#header-social {
+	line-height: @navbarHeight;
+	li {
+		margin: 0;
+		padding: 0 0.5em;
+		max-height: @navbarHeight;
+		a {
+			margin: 0;
+			color: @globalnav-text;
+			i {
+				display: inline;
+				position: unset;
+			}
+		}
+		&:hover {
+			background-color: @globalnav-background-hover;
+			a {
+				color: @globalnav-text-hover;
+			}
+		}
+	}
+	li + li {
+		border-left: 1px solid @globalnav-text;
+	}
 }
 
 body #site-header {
