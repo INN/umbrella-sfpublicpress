@@ -19,6 +19,8 @@ function largo_child_require_files() {
 		'/inc/enqueue.php',
 		'/inc/block-color-palette.php',
 		'/inc/navigation.php',
+		// homepage
+		'/homepages/layout.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {

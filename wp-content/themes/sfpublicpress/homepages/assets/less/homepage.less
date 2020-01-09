@@ -1,0 +1,130 @@
+@import (reference) "../../../less/variables.less";
+@import (reference) "../../../less/mixins.less";
+
+#top-story {
+    border-bottom: 0;
+    margin-bottom: @measure + @measure;
+    .post-image-top-term-container {
+        .img {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    h2 {
+        margin: @measure 0;
+        a {
+            font-family: @font-header;
+            font-size: 60px;
+            line-height: 4.5rem;
+            color: @orange;
+            &:hover {
+                text-decoration: none;
+                color: @black;
+            }
+        }
+    }
+    .excerpt {
+        p {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: 769px) {
+        margin-bottom: @measure;
+    }
+}
+
+.widget-area {
+    display: flex;
+    border-bottom: 1px solid @light-gray;
+    .widget-area-left {
+        display: inline-block;
+        width: 70%;
+        padding-right: 40px;
+    }
+    .widget-area-right {
+        display: inline-block;
+        width: 30%;
+        .largo-recent-posts {
+            background: @gray;
+            .widgettitle {
+                color: @white;
+                margin: 20px;
+            }
+            ul {
+                .inner-border;
+                border-color: @white;
+                li {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: @measure;
+                    h5 {
+                        order: 2;
+                        margin-bottom: 0;
+                        a {
+                            font-size: 28px;
+                            line-height: 2.5rem;
+                            color: @white;
+                            font-family: @font-header;
+                            &::after {
+                                content: "\f344";
+                                font-family: 'dashicons';
+                                margin-left: 0.5rem;
+                                vertical-align: top;
+                                transition: margin-left 0.3s;
+                            }
+                            &:hover::after {
+                                margin-left: 1rem;
+                            }
+                            &:hover {
+                                text-decoration: none;
+                                color: @orange;
+                            }
+                            @media (max-width: 999px) and (min-width: 770px){
+                                font-size: initial;
+                                line-height: initial;
+                            }
+                            @media (max-width: 769px){
+                                font-size: 24px;
+                            }
+                        }
+                    }
+                    .byline {
+                        order: 1;
+                    }
+                    &:not(:first-of-type) {
+                        border-top: 1px solid @white;
+                        padding-top: @measure;
+                    }
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
+                    .byline {
+                        .by-author {
+                            .by {
+                                color: @white;
+                            }
+                            .url {
+                                color: @white;
+                                &:hover {
+                                    color: @orange;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 769px) {
+        flex-direction: column;
+        border-bottom: 0;
+        .widget-area-left,
+        .widget-area-right {
+            width: 100%;
+            padding: 0;
+            border: 0;
+        }
+    }
+}
