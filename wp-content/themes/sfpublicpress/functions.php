@@ -1,5 +1,4 @@
 <?php
-define( 'SHOW_GLOBAL_NAV', false );
 define( 'SHOW_CATEGORY_RELATED_TOPICS', false );
 /**
  * Include theme files
