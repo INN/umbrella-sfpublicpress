@@ -1,5 +1,4 @@
 <?php
-define( 'SHOW_STICKY_NAV', false );
 define( 'SHOW_CATEGORY_RELATED_TOPICS', false );
 /**
  * Include theme files
@@ -19,6 +18,7 @@ function largo_child_require_files() {
 	$includes = array(
 		'/inc/enqueue.php',
 		'/inc/block-color-palette.php',
+		'/inc/navigation.php',
 		// homepage
 		'/homepages/layout.php',
     );
