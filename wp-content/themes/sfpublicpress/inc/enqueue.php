@@ -13,5 +13,6 @@ function sfpublicpress_enqueue_styles(){
         array( 'largo-stylesheet', 'typekit' ),
 		filemtime( get_stylesheet_directory() . '/css/child-style.css' )
 	);
+	wp_enqueue_style( 'dashicons' );
 }
 add_action( 'wp_enqueue_scripts', 'sfpublicpress_enqueue_styles' ); 
