@@ -31,8 +31,8 @@ class SFPublicPress extends Homepage {
 				),
 			),
 			'sidebars' => array(
-                'Homepage Top Right (The top right area of the homepage, next to the top story)',
-                'Homepage Secondary Featured (The area right under the top featured area)',
+				'Homepage Top Right (The top right area of the homepage, next to the top story)',
+				'Homepage Secondary Featured (The area right under the top featured area)',
 				'Homepage Bottom (The bottom area of the homepage, after the top and featured stories)',
 			),
 		);
