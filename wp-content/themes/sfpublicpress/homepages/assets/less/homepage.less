@@ -197,7 +197,7 @@
                 // note that this uses LESS escapes and interpolation in order to prevent a nasty thing
                 // where ( 100% - 4*@measure )/11  gets simplified to (100 - 4)/11%
                 // http://lesscss.org/features/#variables-feature-variable-interpolation
-                @fr: ~"(   (100% - ( 4 * @{measure} ) )   /   ( 6 + 4 )   )";
+                @fr: ~"(   (100% - ( 3 * @{measure} ) )   /   ( 6 + 4 )   )";
                 grid-template-columns:
                   calc( ( 6 * @fr) + @measure )
                   calc( ( 4 * @fr ) + @measure + @measure )
