@@ -88,6 +88,14 @@
     text-align: center;
     margin-bottom: @measure * 2;
     position: relative;
+    a {
+        background: @white;
+        padding: 0 @measure;
+        &:hover {
+            text-decoration: none;
+            color: @dark-orange;
+        }
+    }
     &::before {
         content: '';
         background-image: url(/wp-content/themes/sfpublicpress/assets/lines.png);
@@ -99,6 +107,7 @@
         background-size: contain;
         left: 0;
         top: 30%;
+        z-index: -1;
         @media (max-width: 769px) {
             background-image: url(/wp-content/themes/sfpublicpress/assets/lines-mobile.png);
             top: 20%;
