@@ -1,0 +1,170 @@
+.footer-bg {
+    background: @white;
+    padding-bottom: 0;
+    #supplementary {
+        display: flex;
+        flex-wrap: wrap;
+        .widget-area {
+            border-bottom: 0;
+        }
+        .span3 {
+            .widget_nav_menu {
+                ul {
+                    li {
+                        a {
+                            font-family: @font-header;
+                            font-size: 18px;
+                            letter-spacing: 0.9px;
+                            &:hover {
+                                color: @dark-orange;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .widget_search {
+                .form-search {
+                    float: right;
+                    input.search-query {
+                        font-size: 15px;
+                        margin-right: 0;
+                        margin-bottom: 0;
+                        width: 95%!important;
+                    }
+                    .search-submit {
+                        margin-left: 0;
+                        width: 100%;
+                    }
+                    @media (max-width: 769px) {
+                        float: none;
+                    }
+                }
+            }
+        }
+        .span12 {
+            background: @orange;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: 0!important;
+            padding-right: 0!important;
+            margin-bottom: 0;
+            .inner-bottom-widget-area {
+                max-width: 1170px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .widget_text {
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    p {
+                        font-family: @font-footer;
+                        font-size: 16px;
+                        line-height: 1.5rem;
+                        color: @black;
+                        margin-bottom: 0;
+                    }
+                }
+                .largo-follow {
+                    margin: 0;
+                    &.post-social {
+                        text-align: center;
+                        margin-top: calc(@measure + 1rem);
+                        margin-bottom: calc(@measure + 1rem);
+                        span {
+                            background: transparent;
+                            &.popover {
+                                background: @white;
+                                &:hover {
+                                    background: @white;
+                                }
+                                ul {
+                                    li {
+                                        &:before {
+                                            content: '';
+                                        }
+                                    }
+                                }
+                                i {
+                                    position: relative;
+                                    color: @orange;
+                                    &:hover {
+                                        color: @blue;
+                                    }
+                                }
+                                span {
+                                    margin: 10px 0;
+                                }
+                            }
+                            &:hover {
+                                background: transparent;
+                            }
+                            a {
+                                font-size: initial;
+                                padding: 0;
+                                margin: 0 20px 0 0!important;
+                                i {
+                                    padding: 10px 11px;
+                                    &:before {
+                                        margin-right: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    a {
+                        display: inline-block;
+                        color: transparent;
+                        font-size: 0;
+                        background-color: transparent!important;
+                        margin: 0!important;
+                        letter-spacing:0;
+                        padding: 0;
+                        outline: none;
+                        i {
+                            border-right: 0;
+                            color: @orange;
+                            background: @black;
+                            width: 130px;
+                            height: 54px;
+                            text-align: center;
+                            line-height: 54px;
+                            vertical-align: middle;
+                            padding: 0;
+                            margin-right: 0;
+                            margin-left: 0;
+                            font-size: 16px;
+                            &:hover {
+                                border: 0;
+                                color: @white;
+                                background: @dark-orange;
+                            }
+                        }
+                        .hidden-phone {
+                            display: none;
+                        }
+                    }
+                }
+                @media (max-width: 769px) {
+                    margin: 1.5rem 0;
+                    padding: 0 20px;
+                    display: block;
+                    .widget_text {
+                        margin-bottom: @measure;
+                    }
+                    .largo-follow {
+                        display: flex;
+                        .social-btn {
+                            width: 100%;
+                            i {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
