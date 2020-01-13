@@ -1,0 +1,20 @@
+.widget.largo-recent-posts {
+    margin: @measure + 1rem 0;
+    ul {
+        li {
+            h5 {
+                &:not(.top-tag) {
+                    margin: @measure 0;
+                    a {
+                        font-family: @font-header;
+                        color: @orange;
+                        &:hover {
+                            color: @black;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
