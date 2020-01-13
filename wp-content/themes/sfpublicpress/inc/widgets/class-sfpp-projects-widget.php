@@ -29,6 +29,6 @@ class sfpp_projects_widget extends WP_Widget {
 			'classname' => 'sfpp-projects',
 			'description' => esc_html__( 'Display selected projects in a widget.', 'sfpp' ),
 		);
-		parent::__construct( 'sfpp-projects-widget', esc_html__( 'SFPP Projects List', 'sfpp', $widget_ops );
+		parent::__construct( 'sfpp-projects-widget', esc_html__( 'SFPP Projects List', 'sfpp', $widget_ops ) );
 	}
 }
