@@ -188,6 +188,7 @@ class sfpp_projects_widget extends WP_Widget {
 	 * @param $instance Saved values for this widget from db.
 	 */
 	public function widget( $args, $instance ) {
+		error_log(var_export( $instance , true));
 		// Add the link to the title.
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -200,6 +201,54 @@ class sfpp_projects_widget extends WP_Widget {
 
 		if ( ! empty( $title ) ) {
 			echo $args['before_title'] . wp_kses_post( $title ) . $args['after_title'];
+		}
+
+		foreach ( array( 'proj1' ) as $key ) {
+			if ( isset( $instance[$key] ) && ! empty( $instance[$key] ) ) {
+				$term = get_term( $instance[$key], 'series' );
+
+				printf(
+					'<section class="%1$s">',
+					$key
+				);
+
+				printf(
+					'<a href="%1$s"><h3>%2$s</h3></a>',
+					$term->permalink,
+					$term->name
+				);
+				printf(
+					'<a href="%1$s" class="view-more-link">%2$s</a>',
+					$term->permalink,
+					__( 'Explore project', 'sfpp' )
+				);
+
+				echo '</section>';
+			}
+		}
+
+		foreach ( array( 'proj2', 'proj3', 'proj4', 'proj5', ) as $key ) {
+			if ( isset( $instance[$key] ) && ! empty( $instance[$key] ) ) {
+				$term = get_term( $instance[$key], 'series' );
+
+				printf(
+					'<section class="%1$s">',
+					$key
+				);
+
+				printf(
+					'<a href="%1$s"><h3>%2$s</h3></a>',
+					$term->permalink,
+					$term->name
+				);
+				printf(
+					'<a href="%1$s" class="view-more-link">%2$s</a>',
+					$term->permalink,
+					__( 'Explore project', 'sfpp' )
+				);
+
+				echo '</section>';
+			}
 		}
 
 		if ( ! empty( $instance['linkurl'] ) && ! empty( $instance['linktext'] ) ) {
