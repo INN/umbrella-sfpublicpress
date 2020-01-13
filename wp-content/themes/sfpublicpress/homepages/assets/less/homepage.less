@@ -38,6 +38,9 @@
 .widget-area {
     display: flex;
     border-bottom: 1px solid @light-gray;
+    .bottom-widget-area & {
+        display: block;
+    }
     .widget-area-left {
         display: inline-block;
         width: 70%;
@@ -325,6 +328,23 @@
                     text-align: center;
                     margin-top: @measure * 2;
                 }
+            }
+        }
+        .widget_text {
+            .widgettitle {
+                .widget-title;
+            }
+            h3.orange {
+                color: @orange;
+                font-family: @font-header;
+                font-size: 48px;
+                line-height:3.8rem;
+            }
+            p {
+                font-size: 18px;
+            }
+            img {
+                margin: 0;
             }
         }
     }
