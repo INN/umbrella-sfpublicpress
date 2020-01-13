@@ -19,6 +19,14 @@
     </div>
 </div>
 
+<div class="secondary-featured-widget-area clearfix">
+    <div class="widget-area">
+        <?php
+            dynamic_sidebar( 'Homepage Secondary Featured' );
+        ?>
+    </div>
+</div>
+
 <div class="bottom-widget-area clearfix">
     <div class="widget-area">
         <?php

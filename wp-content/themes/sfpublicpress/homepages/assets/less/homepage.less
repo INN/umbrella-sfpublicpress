@@ -51,6 +51,7 @@
         width: 30%;
         .largo-recent-posts {
             background: @gray;
+            margin: 0;
             .widgettitle {
                 color: @white;
                 margin: 20px;
@@ -62,9 +63,13 @@
                     display: flex;
                     flex-direction: column;
                     margin-bottom: @measure;
+                    .view-more-link {
+                        display: none;
+                    }
                     h5 {
                         order: 2;
                         margin-bottom: 0;
+                        margin-top: 12px;
                         a {
                             font-size: 28px;
                             line-height: 2.5rem;
@@ -128,6 +133,202 @@
             width: 100%;
             padding: 0;
             border: 0;
+        }
+    }
+}
+
+.secondary-featured-widget-area {
+    .widget-area {
+        border-bottom: 0;
+        .largo-recent-posts {
+            ul {
+                li {
+                    .post-image-top-term-container {
+                        @media (min-width: 770px) {
+                            float: left;
+                            margin-right: 5%;
+                        }
+                        @media (min-width: 1000px) {
+                            max-width: 50%;
+                        }
+                        a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                                @media (max-width: 999px) and (min-width: 770px) {
+                                    max-width: 300px;
+                                }
+                            }
+                        }
+                    }
+                    .inner-widget-content {
+                        overflow: hidden;
+                    }
+                    h5 {
+                        &:not(.top-tag) {
+                            color: @orange;
+                            font-size: 48px;
+                            line-height: 3.8rem;
+                        }
+                    }
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bottom-widget-area {
+    .widget-area {
+        .largo-recent-posts {
+            display: grid;
+                box-sizing: border-box;
+        
+                grid-template-areas:
+                  "title title"
+                  "a b"
+                  "a c"
+                  "a more"
+                ;
+                // what I would do if I could mix fr and rem:
+                // grid-template-columns: calc( 6fr + @measure ) calc( 4fr + @measure + @measure );
+                // we want one @measure padding in these locations:
+                //          a | b
+                //          a | c
+                //          a | more
+                // that's four times in 100% of width
+                // and then that remainder of 100% will be split 6:4 across the columns
+                // so let's define a term for ( (100% - 4@measure) / ( 6 + 4 ) )
+                // and use that as "1fr"
+                //
+                // note that this uses LESS escapes and interpolation in order to prevent a nasty thing
+                // where ( 100% - 4*@measure )/11  gets simplified to (100 - 4)/11%
+                // http://lesscss.org/features/#variables-feature-variable-interpolation
+                @fr: ~"(   (100% - ( 3 * @{measure} ) )   /   ( 6 + 4 )   )";
+                grid-template-columns:
+                  calc( ( 6 * @fr) + @measure )
+                  calc( ( 4 * @fr ) + @measure + @measure )
+                ;
+                // and then let everyone's browser melt
+        
+        
+                // these must remain 0; they're not accounted for in the above calculations
+                // and also it would get in the way of placing borders
+                grid-column-gap: 0;
+                grid-row-gap: @measure;
+        
+                grid-template-rows: auto;
+                justify-items: center;
+                align-items: stretch;
+                // in case this widget gets set to n>5 posts:
+                grid-auto-columns: 1fr;
+                // grid-auto-rows: 1fr;
+                grid-auto-flow: row;
+            .widgettitle {
+                .widget-title;
+                grid-area: title;
+                width: 100%;
+            }
+            ul {
+                display: contents;
+                li {
+                  box-sizing: border-box;
+                  position: relative;
+                  margin-bottom: @measure;
+        
+                  &:nth-child( 1 ) {
+                    grid-area: a;
+                    padding-right: @measure;
+                    .post-image-top-term-container {
+                        a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .inner-widget-content {
+                        h5 {
+                            a {
+                                font-size: 48px;
+                                line-height: 3.8rem;
+                            }
+                        }
+                    }
+                  }
+                  &:nth-child( 2 ) {
+                    grid-area: b;
+                    margin-left: @measure;
+                  }
+                  &:nth-child( 3 ) {
+                    grid-area: c;
+                    margin-left: @measure;
+                  }
+                  &:not(:first-of-type) {
+                      border-bottom: 1px solid @black;
+                      padding-bottom: @measure;
+                      margin-bottom: 0;
+                      h5{
+                          &:not(.top-tag) {
+                              a {
+                                  color: @black;
+                                  font-size: 28px;
+                                  line-height: 2.5rem;
+                                  &:hover {
+                                      color: @dark-orange;
+                                  }
+                              }
+                          }
+                      }
+                      p {
+                          display: none;
+                      }
+                  }
+                }
+            }
+            .morelink {
+                grid-area: more;
+                margin-left: @measure * 2;
+                margin-top: @measure;
+                width: 100%;
+                a {
+                    .btn;
+                    padding: 15px 20px;
+                }
+            }
+            @media (max-width: 769px) {
+                display: block;
+                ul {
+                    display: block;
+                    li {
+                        border-bottom: 1px solid @black;
+                        margin-top: @measure;
+                        padding-bottom: @measure;
+                        &:nth-of-type(1) {
+                            padding-right: 0;
+                        }
+                        &:nth-of-type(2),
+                        &:nth-of-type(3) {
+                            margin-left: 0;
+                            padding-left: 0;
+                        }
+                        a {
+                            width: 100%;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                .morelink {
+                    float: none;
+                    margin-left: 0;
+                    text-align: center;
+                    margin-top: @measure * 2;
+                }
+            }
         }
     }
 }
