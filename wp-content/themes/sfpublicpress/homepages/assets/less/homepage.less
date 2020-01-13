@@ -343,8 +343,10 @@
             p {
                 font-size: 18px;
             }
-            img {
-                margin: 0;
+            @media (max-width: 769px) {
+                img {
+                    margin: 0 0 @measure;
+                }
             }
         }
     }
