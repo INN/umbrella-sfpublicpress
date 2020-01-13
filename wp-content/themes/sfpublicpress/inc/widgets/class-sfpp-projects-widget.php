@@ -51,6 +51,7 @@ class sfpp_projects_widget extends WP_Widget {
 			'proj4' => null,
 			'proj5' => null,
 		);
+		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		?>
 
@@ -65,6 +66,8 @@ class sfpp_projects_widget extends WP_Widget {
 				<?php
 					wp_dropdown_categories(
 						array(
+							'id' => $this->get_field_id( 'proj1' ),
+							'name' => $this->get_field_name( 'proj1' ),
 							'taxonomy' => 'series',
 							'orderby' => 'name',
 							'class' => 'postform widefat',
@@ -82,6 +85,8 @@ class sfpp_projects_widget extends WP_Widget {
 				<?php
 					wp_dropdown_categories(
 						array(
+							'id' => $this->get_field_id( 'proj2' ),
+							'name' => $this->get_field_name( 'proj2' ),
 							'taxonomy' => 'series',
 							'orderby' => 'name',
 							'class' => 'postform widefat',
@@ -96,6 +101,8 @@ class sfpp_projects_widget extends WP_Widget {
 				<?php
 					wp_dropdown_categories(
 						array(
+							'id' => $this->get_field_id( 'proj3' ),
+							'name' => $this->get_field_name( 'proj3' ),
 							'taxonomy' => 'series',
 							'orderby' => 'name',
 							'class' => 'postform widefat',
@@ -110,6 +117,8 @@ class sfpp_projects_widget extends WP_Widget {
 				<?php
 					wp_dropdown_categories(
 						array(
+							'id' => $this->get_field_id( 'proj4' ),
+							'name' => $this->get_field_name( 'proj4' ),
 							'taxonomy' => 'series',
 							'orderby' => 'name',
 							'class' => 'postform widefat',
@@ -124,6 +133,8 @@ class sfpp_projects_widget extends WP_Widget {
 				<?php
 					wp_dropdown_categories(
 						array(
+							'id' => $this->get_field_id( 'proj5' ),
+							'name' => $this->get_field_name( 'proj5' ),
 							'taxonomy' => 'series',
 							'orderby' => 'name',
 							'class' => 'postform widefat',
@@ -148,7 +159,7 @@ class sfpp_projects_widget extends WP_Widget {
 			if ( ! isset( $new_instance[$key] ) || empty( $new_instance[$key] ) ) {
 				$instance[$key] = null;
 			} else {
-				$instance[$key] = sanitize_key( $new_instance[$key] );
+				$instance[$key] = (int) sanitize_key( $new_instance[$key] ); // it's expected to be the term ID.
 			}
 		}
 
