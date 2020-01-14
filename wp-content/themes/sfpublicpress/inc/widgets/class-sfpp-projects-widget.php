@@ -225,7 +225,7 @@ class sfpp_projects_widget extends WP_Widget {
 				}
 
 				printf(
-					'<a href="%1$s"><h3>%2$s</h3></a>',
+					'<h3><a href="%1$s">%2$s</a></h3>',
 					get_term_link( $term, 'series' ),
 					$term->name
 				);
@@ -252,7 +252,7 @@ class sfpp_projects_widget extends WP_Widget {
 				);
 
 				printf(
-					'<a href="%1$s"><h3>%2$s</h3></a>',
+					'<h3><a href="%1$s">%2$s</a></h3>',
 					get_term_link( $term, 'series' ),
 					$term->name
 				);
@@ -267,7 +267,7 @@ class sfpp_projects_widget extends WP_Widget {
 		}
 
 		if ( ! empty( $instance['linkurl'] ) && ! empty( $instance['linktext'] ) ) {
-			echo '<p class="morelink btn btn-primary"><a href="' . esc_url( $instance['linkurl'] ) . '">' . esc_html( $instance['linktext'] ) . '</a></p>';
+			echo '<a class="morelink btn btn-primary" href="' . esc_url( $instance['linkurl'] ) . '">' . esc_html( $instance['linktext'] ) . '</a>';
 		}
 
 		// close the widget
