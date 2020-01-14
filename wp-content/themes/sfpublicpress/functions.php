@@ -22,6 +22,7 @@ function largo_child_require_files() {
 		// homepage
 		'/homepages/layout.php',
 		// widgets
+		'/inc/widgets/sfpublicpress-promo-box.php',
 		'/inc/widgets/sfpublicpress-podcasts.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
