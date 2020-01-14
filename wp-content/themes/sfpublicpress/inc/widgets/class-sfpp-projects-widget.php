@@ -205,6 +205,7 @@ class sfpp_projects_widget extends WP_Widget {
 		foreach ( array( 'proj1' ) as $key ) {
 			if ( isset( $instance[$key] ) && ! empty( $instance[$key] ) ) {
 				$term = get_term( $instance[$key], 'series' );
+				// function defined here: https://github.com/INN/largo/blob/512da701664b329f2f92244bbe54880a6e146431/inc/taxonomies.php#L369
 				$page = largo_get_series_landing_page_by_series( $term );
 
 				printf(
@@ -212,24 +213,24 @@ class sfpp_projects_widget extends WP_Widget {
 					$key
 				);
 
+				if ( ! empty( $page ) ) {
+					echo '<p>thumbnail should be here:</p>';
+					$foo = get_the_post_thumbnail(
+						$page->ID,
+						'full'
+					);
+					echo '<pre><code>' . var_export( $foo, true ) . '</code></pre>';
+					echo $foo;
+					error_log(var_export( $id, true));
+				}
+
 				printf(
 					'<a href="%1$s"><h3>%2$s</h3></a>',
 					get_term_link( $term, 'series' ),
 					$term->name
 				);
 
-				if ( ! empty( $page ) ) {
-					echo 'thumbnail!';
-					// error_log(var_export( $page, true));
-					$id = get_post_thumbnail_id( $page );
-					$foo = get_the_post_thumbnail(
-						$page->ID,
-						'full'
-					);
-					echo $page;
-					echo $foo;
-					error_log(var_export( $id, true));
-				}
+				echo wpautop( wp_kses_post( $term->description ) );
 
 				printf(
 					'<a href="%1$s" class="view-more-link">%2$s</a>',
