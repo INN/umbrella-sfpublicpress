@@ -70,6 +70,17 @@ body {
             }
         }
     }
+    ul {
+        list-style: none;
+        li::before {
+            content: '\26AC';
+            color: @orange;
+            width: 1em;
+            text-align: center;
+            display: inline-block;
+            margin-left: -1em;
+        }
+    }
 }
 p.has-drop-cap:not(:focus)::first-letter {
 	// these are calculated to have font size of 100px, line height 120px, at paragraph font size 20px line height 1.8rem;
