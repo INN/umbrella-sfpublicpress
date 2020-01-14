@@ -1,0 +1,76 @@
+.widget_sfpp-projects-widget {
+	box-sizing: border-box;
+	width: 100%;
+	@media ( min-width: 800px ) {
+		&::before, &::after {
+			display: none; // they mess up the grid
+		}
+		display: grid;
+		grid-template-areas:
+			"title title"
+			"proj1 proj2"
+			"proj1 proj3"
+			"proj1 proj4"
+			"proj1 proj5"
+			"proj1 morelink"
+		;
+		grid-template-columns:
+			calc( (100% - ( 2 * @measure ) ) * 0.6 )
+			calc( (100% - ( 2 * @measure ) ) * 0.4 )
+		;
+		grid-template-rows: auto;
+		grid-column-gap: 2 * @measure;
+
+		.widgettitle { grid-area: title; }
+		.proj1 { grid-area: proj1; }
+		.proj2 { grid-area: proj2; }
+		.proj3 { grid-area: proj3; }
+		.proj4 { grid-area: proj4; }
+		.proj5 { grid-area: proj5; }
+		.morelink { grid-area: morelink }
+	}
+
+	.home & .widgettitle {
+		.widget-title;
+	}
+	h3 {
+		font-family: @font-header;
+		font-size: 48px;
+		margin-bottom: 0.25em;
+		a {
+			font-family: @font-header;
+			color: @black;
+			&:hover {
+				color: @orange;
+				text-decoration: none;
+			}
+		}
+	}
+	img {
+		margin-bottom: @measure;
+	}
+	.proj1 {
+		h3 {
+			a {
+				color: @orange;
+				&:hover {
+					color: @black;
+				}
+			}
+		}
+	}
+	.proj2,
+	.proj3,
+	.proj4,
+	.proj5 {
+		padding: @measure 0;
+		border-bottom: 1px solid @light-gray;
+		h3 {
+			font-size: 30px;
+		}
+	}
+	
+	.morelink {
+		margin-top: 1em;
+	}
+}
