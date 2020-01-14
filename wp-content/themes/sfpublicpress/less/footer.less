@@ -1,0 +1,193 @@
+.before-footer-wrapper {
+    background: @white;
+    padding: 0 2.5%;
+    @media (max-width: 979px) and (min-width: 770px) {
+        padding: 0 18px;
+    }
+    #before-footer {
+        border-top: 3px solid @black;
+        padding: @measure * 2 0;
+        margin: 0 auto; 
+        display: grid;
+        grid-template-areas:
+            "about supporters"
+            "donate supporters"
+        ;
+        grid-template-rows: .5fr 1fr;
+        grid-template-columns: .8fr 1fr;
+        .widgettitle {
+            font-size: 28px;
+            line-height: 2.1rem;
+            text-transform: capitalize;
+            margin-bottom: @measure;
+        }
+        .largo-about {
+            grid-area: about;
+            margin-right: @measure;
+        }
+        .largo-donate {
+            grid-area: donate;
+            .widgettitle {
+                display: none;
+            }
+            .btn {
+                .btn;
+                .btn-green;
+                color: @black;
+            }
+        }
+        .widget_text {
+            grid-area: supporters;
+            border-left: 1px solid @light-brown;
+            padding-left: @measure + 1rem;
+            .textwidget {
+                p {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: @measure * 2;
+                    font-size: 18px;
+                    justify-items: center;
+                    align-items: center;
+                }
+            }
+        }
+        @media (max-width: 769px) {
+            display: block;
+            .largo-about {
+                margin-right: 0;
+            }
+            .widget_text {
+                border-left: 0;
+                padding-left: 0;
+            }
+        }
+    }
+}
+.footer-bg {
+    background: @white;
+    padding-bottom: 0;
+    #supplementary {
+        border-top: 1px solid @black;
+        display: flex;
+        flex-wrap: wrap;
+        .widget-area {
+            border-bottom: 0;
+        }
+        .span3 {
+            .widget_nav_menu {
+                ul {
+                    li {
+                        a {
+                            font-family: @font-header;
+                            font-size: 18px;
+                            letter-spacing: 0.9px;
+                            &:hover {
+                                color: @dark-orange;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .widget_search {
+                .form-search {
+                    float: right;
+                    input.search-query {
+                        font-size: 15px;
+                        margin-right: 0;
+                        margin-bottom: 0;
+                        width: 95.5%!important;
+                    }
+                    .search-submit {
+                        margin-left: 0;
+                        width: 100%;
+                        border: 0;
+                    }
+                    @media (max-width: 769px) {
+                        float: none;
+                    }
+                }
+            }
+        }
+        .span12 {
+            background: @orange;
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            padding-left: 0!important;
+            padding-right: 0!important;
+            margin-bottom: 0;
+            .inner-bottom-widget-area {
+                max-width: 1170px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 0 0 20px;
+                .widget_text {
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    p {
+                        font-family: @font-footer;
+                        font-size: 16px;
+                        line-height: 1.5rem;
+                        color: @black;
+                        margin-bottom: 0;
+                    }
+                }
+                .largo-follow {
+                    margin: 0;
+                    a {
+                        display: inline-block;
+                        color: transparent;
+                        font-size: 0;
+                        background-color: transparent!important;
+                        margin: 0!important;
+                        letter-spacing:0;
+                        padding: 0;
+                        outline: none;
+                        i {
+                            border-right: 0;
+                            color: @orange;
+                            background: @black;
+                            width: 100px;
+                            height: 54px;
+                            text-align: center;
+                            line-height: 54px;
+                            vertical-align: middle;
+                            padding: 0;
+                            margin-right: 0;
+                            margin-left: 0;
+                            font-size: 16px;
+                            &:hover {
+                                border: 0;
+                                color: @white;
+                                background: @dark-orange;
+                            }
+                        }
+                        .hidden-phone {
+                            display: none;
+                        }
+                    }
+                }
+                @media (max-width: 769px) {
+                    margin: 1.5rem 0;
+                    padding: 0 20px;
+                    display: block;
+                    .widget_text {
+                        margin-bottom: @measure;
+                    }
+                    .largo-follow {
+                        display: flex;
+                        .social-btn {
+                            width: 100%;
+                            i {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
