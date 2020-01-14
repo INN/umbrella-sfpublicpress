@@ -1,7 +1,14 @@
 <?php
 
 // the thumbnail image (if we're using one)
-if ($thumb == 'small') {
+if ( $podcast === true ) {
+    printf(
+        '<p class="mediaplay"><a href="%1$s">%2$s <span class="visuallyhidden">%3$s</span></a></p>',
+        get_permalink(),
+        '<span class="encircle">►</span>',
+        __( 'Decorative play icon links to post: ', 'sfpublicpress') . get_the_title()
+    );
+} elseif ($thumb == 'small') {
 	$img_location = ! empty( $instance['image_align'] ) ? $instance['image_align'] : 'left';
 	$img_attr = array( 'class' => $img_location . '-align' );
 	$img_attr['class'] .= " attachment-small";
@@ -53,11 +60,19 @@ if ($thumb == 'small') {
 // the headline and optionally the post-type icon
 
 // byline on posts
-if ( isset( $instance['show_byline'] ) && $instance['show_byline'] == true) {
+if ( isset( $instance['show_byline'] ) && $instance['show_byline'] == true && $podcast !== true ) {
 	$hide_byline_date = ( ! empty( $instance['hide_byline_date'] ) ) ? $instance['hide_byline_date'] : true;
 	?>
 		<span class="byline"><?php echo largo_byline( false, $hide_byline_date, get_the_ID() ); ?></span>
 	<?php
+}
+
+if( $podcast === true ) {
+    if( largo_top_term( $options = array( 'echo' => FALSE ) ) ) {
+        echo '<div class="podcast-top-term-date">' . largo_top_term( $options = array( 'echo' => FALSE ) ) . ' | ' . get_the_date( 'M d Y' ) . ' | ' . get_the_time() . '</div>';
+    } else {
+        echo '<div class="podcast-top-term-date">' . get_the_date( 'M d Y' ) . ' | ' . get_the_time() . '</div>';
+    }
 }
 
 ?>

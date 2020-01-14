@@ -23,6 +23,7 @@ function largo_child_require_files() {
 		'/homepages/layout.php',
 		// widgets
 		'/inc/widgets/sfpublicpress-promo-box.php',
+		'/inc/widgets/sfpublicpress-podcasts.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
