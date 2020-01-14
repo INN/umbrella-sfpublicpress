@@ -220,14 +220,11 @@ class sfpp_projects_widget extends WP_Widget {
 				);
 
 				if ( ! empty( $page ) ) {
-					echo '<p>thumbnail should be here:</p>';
 					$foo = get_the_post_thumbnail(
 						$page[0]->ID,
 						'full'
 					);
-					echo '<pre><code>' . var_export( $foo, true ) . '</code></pre>';
 					echo $foo;
-					error_log(var_export( $id, true));
 				}
 
 				printf(
