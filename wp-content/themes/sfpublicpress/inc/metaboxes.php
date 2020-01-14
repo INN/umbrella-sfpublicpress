@@ -13,7 +13,7 @@ function subtitle_meta_box_display() {
 	$values = get_post_custom( $post->ID );
 	wp_nonce_field( 'largo_meta_box_nonce', 'meta_box_nonce' );
 	?>
-		<label for="subtitle"><?php esc_html_e( 'Subtitle', 'largo' ); ?></label>
+		<label for="subtitle"><?php esc_html_e( 'Dek/Subtext', 'largo' ); ?></label>
 		<textarea name="subtitle" id="subtitle" class="widefat" rows="2" cols="20"><?php
 			// PHP open/close are at the textarea boundary so we don't prepend/append this with tabs.
 			if ( isset( $values['subtitle'] ) ) {
@@ -32,7 +32,7 @@ add_action(
 	function() {
 		largo_add_meta_box(
 			'subtitle',
-			'Subtitle',
+			'Dek/Subtext',
 			'subtitle_meta_box_display',
 			'post',
 			'normal',
