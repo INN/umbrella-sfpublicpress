@@ -1,0 +1,38 @@
+.single {
+    article {
+        header {
+            margin: 0 0 @measure * 2!important;
+            text-align: center;
+            .entry-title {
+                font-size: 80px;
+                line-height: 6rem;
+                margin-bottom: @measure;
+                padding-top: 0!important;
+            }
+            .subtitle {
+                color: @orange;
+                font-family: @font-body;
+                font-size: 24px;
+                line-height: 2.3rem;
+                margin-bottom: @measure;
+            }
+            @media (max-width: 769px) {
+                .entry-title {
+                    font-size: 40px;
+                    line-height: 3rem;
+                }
+                .subtitle {
+                    font-size: 19px;
+                    line-height: 2rem;
+                }
+            }
+        }
+        .hero {
+            background: transparent;
+            margin-bottom: @measure * 2;
+            .wp-caption-text {
+                display: none;
+            }
+        }
+    }
+}
