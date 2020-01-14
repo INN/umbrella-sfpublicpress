@@ -19,6 +19,7 @@ function largo_child_require_files() {
 		'/inc/enqueue.php',
 		'/inc/block-color-palette.php',
 		'/inc/navigation.php',
+		'/inc/metaboxes.php',
 		// homepage
 		'/homepages/layout.php',
 		// widgets
