@@ -39,18 +39,22 @@
 		margin-bottom: 0.25em;
 		a {
 			font-family: @font-header;
-			color: @black;
+			color: @orange;
 			&:hover {
-				color: @orange;
+				color: @black;
+				text-decoration: none;
 			}
 		}
+	}
+	img {
+		margin-bottom: @measure;
 	}
 
 	.proj2,
 	.proj3,
 	.proj4,
 	.proj5 {
-		padding: 1em 0;
+		padding: @measure 0;
 		border-bottom: 1px solid @light-gray;
 		h3 {
 			font-size: 30px;
