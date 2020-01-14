@@ -252,12 +252,12 @@ class sfpp_projects_widget extends WP_Widget {
 
 				printf(
 					'<a href="%1$s"><h3>%2$s</h3></a>',
-					$term->permalink,
+					get_term_link( $term, 'series' ),
 					$term->name
 				);
 				printf(
 					'<a href="%1$s" class="view-more-link">%2$s</a>',
-					$term->permalink,
+					get_term_link( $term, 'series' ),
 					__( 'Explore project', 'sfpp' )
 				);
 
