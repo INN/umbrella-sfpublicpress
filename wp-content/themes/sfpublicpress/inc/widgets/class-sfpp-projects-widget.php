@@ -75,7 +75,7 @@ class sfpp_projects_widget extends WP_Widget {
 						)
 					);
 				?>
-				<small><?php esc_html_e( 'This series will be displayed in the widget with the featured image from its series landing page, if any.', 'sfpp' ); ?></small>
+				<small><?php esc_html_e( 'This series will be displayed in the widget with the featured image from its series landing page.', 'sfpp' ); ?></small>
 			</p>
 
 			<p>Projects after the first project are displayed as the project name.</p>
