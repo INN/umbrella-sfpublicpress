@@ -107,6 +107,8 @@ class sfpp_projects_widget extends WP_Widget {
 							'orderby' => 'name',
 							'class' => 'postform widefat',
 							'selected' => $instance['proj3'],
+							'show_option_none' => '(none)',
+							'option_none_value' => '',
 						)
 					);
 				?>
@@ -123,6 +125,8 @@ class sfpp_projects_widget extends WP_Widget {
 							'orderby' => 'name',
 							'class' => 'postform widefat',
 							'selected' => $instance['proj4'],
+							'show_option_none' => '(none)',
+							'option_none_value' => '',
 						)
 					);
 				?>
@@ -139,6 +143,8 @@ class sfpp_projects_widget extends WP_Widget {
 							'orderby' => 'name',
 							'class' => 'postform widefat',
 							'selected' => $instance['proj5'],
+							'show_option_none' => '(none)',
+							'option_none_value' => '',
 						)
 					);
 				?>
