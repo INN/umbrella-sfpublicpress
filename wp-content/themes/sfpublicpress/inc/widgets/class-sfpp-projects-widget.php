@@ -188,7 +188,6 @@ class sfpp_projects_widget extends WP_Widget {
 	 * @param $instance Saved values for this widget from db.
 	 */
 	public function widget( $args, $instance ) {
-		error_log(var_export( $instance , true));
 		// Add the link to the title.
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
@@ -206,6 +205,7 @@ class sfpp_projects_widget extends WP_Widget {
 		foreach ( array( 'proj1' ) as $key ) {
 			if ( isset( $instance[$key] ) && ! empty( $instance[$key] ) ) {
 				$term = get_term( $instance[$key], 'series' );
+				$page = largo_get_series_landing_page_by_series( $term );
 
 				printf(
 					'<section class="%1$s">',
@@ -214,9 +214,23 @@ class sfpp_projects_widget extends WP_Widget {
 
 				printf(
 					'<a href="%1$s"><h3>%2$s</h3></a>',
-					$term->permalink,
+					get_term_link( $term, 'series' ),
 					$term->name
 				);
+
+				if ( ! empty( $page ) ) {
+					echo 'thumbnail!';
+					// error_log(var_export( $page, true));
+					$id = get_post_thumbnail_id( $page );
+					$foo = get_the_post_thumbnail(
+						$page->ID,
+						'full'
+					);
+					echo $page;
+					echo $foo;
+					error_log(var_export( $id, true));
+				}
+
 				printf(
 					'<a href="%1$s" class="view-more-link">%2$s</a>',
 					$term->permalink,
