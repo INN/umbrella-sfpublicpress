@@ -34,5 +34,101 @@
                 display: none;
             }
         }
+        .article-content-area {
+            margin-left: 0;
+            @media (max-width: 769px) {
+                width: 100%;
+            }
+        }
+        .byline {
+            font-family: @font-header;
+            color: @black;
+            font-size: 18px;
+            letter-spacing: 0.9px;
+            line-height: 2rem;
+            margin-bottom: @measure + 0.5rem;
+            .byline-date {
+                margin-right: 1rem;
+            }
+            .by-author {
+                margin: 0 1rem;
+            }
+            .edit-link {
+                display: none;
+            }
+            .largo-follow {
+                display: inline-block;
+                margin: 0 1rem;
+                span {
+                    background: transparent;
+                    a {
+                        font-size: initial;
+                        padding: 0;
+                        margin: 0 20px 0 0!important;
+                        i {
+                            color: white;
+                            width: 34px;
+                            height: 34px;
+                            border-radius: 50%;
+                            border: 1px solid @orange;
+                            background: @orange;
+                            text-align: center;
+                            line-height: 34px;
+                            vertical-align: middle;
+                            padding: 6.5px 7.5px;
+                            margin-right: 0;
+                            margin-left: 0;
+                            &:hover {
+                                color: @white;
+                                background: @black;
+                                border: 1px solid @black;
+                            }
+                            &::before {
+                                margin-right: 0;
+                            }
+                        }
+                        .hidden-phone {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            @media (max-width: 769px) {
+                margin-bottom: 0;
+                .sep {
+                    &:last-of-type {
+                        display: none;
+                    }
+                }
+                .largo-follow {
+                    margin: @measure 0;
+                    display: block;
+                }
+            }
+        }
+        .sidebar-content-area {
+            #sidebar {
+                width: 100%;
+            }
+            @media (max-width: 769px) {
+                display: none;
+            }
+        }
+    }
+    @media (max-width: 900px) {
+        &.classic {
+            .byline {
+                margin-bottom: 0;
+                .sep {
+                    &:last-of-type {
+                        display: none;
+                    }
+                }
+                .largo-follow {
+                    margin: @measure 0;
+                    display: block;
+                }
+            }
+        }
     }
 }
