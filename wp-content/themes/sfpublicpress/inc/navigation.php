@@ -14,7 +14,7 @@ function sfpublicpress_nav_enqueues() {
 		'sfpublicpress-navigation',
 		get_stylesheet_directory_uri() . '/js/navigation.js',
 		array( 'jquery' ),
-		filemtime( get_stylesheet_directory() . '/js/navigation.js' ),
+		filemtime( get_stylesheet_directory() . '/js/navigation.js' )
 	);
 	wp_enqueue_script( 'sfpublicpress-navigation' );
 }
