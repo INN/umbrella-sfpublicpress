@@ -102,6 +102,7 @@
                 }
                 .largo-follow {
                     margin: @measure 0;
+                    display: block;
                 }
             }
         }
@@ -111,6 +112,22 @@
             }
             @media (max-width: 769px) {
                 display: none;
+            }
+        }
+    }
+    @media (max-width: 900px) {
+        &.classic {
+            .byline {
+                margin-bottom: 0;
+                .sep {
+                    &:last-of-type {
+                        display: none;
+                    }
+                }
+                .largo-follow {
+                    margin: @measure 0;
+                    display: block;
+                }
             }
         }
     }
