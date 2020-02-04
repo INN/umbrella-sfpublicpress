@@ -1,0 +1,44 @@
+.widget.sfpublicpress-subscribe {
+    background: @blue;
+    &.rev {
+        background: @orange;
+        .widgettitle {
+            background: @orange;
+        }
+    }
+    .inner-widget-container {
+        .inner-border;
+        border-color: @black;
+        .widgettitle {
+            text-transform: none;
+            font-size: 28px;
+            line-height: 2.1rem;
+            padding: 0;
+            color: @black;
+            margin-bottom: @measure;
+        }
+        p {
+            color: @black;
+            line-height: 1.5rem;
+        }
+        form {
+            input {
+                background: transparent;
+                border: 0!important;
+                // border-left: 1px solid @gray;
+                // border-bottom: 1px solid @gray;
+                // border-top: 0!important;
+                // border-right: 0;
+                color: @white;
+                &::placeholder {
+                    color: @white;
+                }
+            }
+            input[type="submit"] {
+                font-family: 'dashicons';
+                content: "\f344";
+
+            }
+        }
+    }
+}

@@ -21,6 +21,8 @@ function largo_child_require_files() {
 		'/inc/block-color-palette.php',
 		// homepage
 		'/homepages/layout.php',
+		// widgets
+		'/inc/widgets/sfpublicpress-subscribe.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
