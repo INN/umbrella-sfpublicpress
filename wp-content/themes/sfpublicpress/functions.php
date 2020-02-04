@@ -1,5 +1,4 @@
 <?php
-define( 'SHOW_STICKY_NAV', false );
 define( 'SHOW_CATEGORY_RELATED_TOPICS', false );
 /**
  * Include theme files
@@ -19,19 +18,24 @@ function largo_child_require_files() {
 	$includes = array(
 		'/inc/enqueue.php',
 		'/inc/block-color-palette.php',
+		'/inc/navigation.php',
+		'/inc/metaboxes.php',
 		// homepage
 		'/homepages/layout.php',
 		// widgets
+		'/inc/widgets/class-sfpp-projects-widget.php',
+		'/inc/widgets/sfpublicpress-promo-box.php',
+		'/inc/widgets/sfpublicpress-podcasts.php',
 		'/inc/widgets/sfpublicpress-subscribe.php',
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
 		$includes[] = '/inc/gravityforms/events-calendar.php';
-    }
-    
+	}
+
 	foreach ( $includes as $include ) {
 		require_once( get_stylesheet_directory() . $include );
-    }
-    
+	}
 }
 add_action( 'after_setup_theme', 'largo_child_require_files' );

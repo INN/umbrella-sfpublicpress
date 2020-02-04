@@ -11,6 +11,7 @@
     &:hover {
         background: @dark-orange;
         color: @white;
+        text-decoration: none;
     }
     &.btn-green {
         background: @green;
@@ -35,6 +36,10 @@
         font-family: 'dashicons';
         margin-left: 0.5rem;
         vertical-align: top;
+        transition: margin-left 0.3s;
+    }
+    &:hover::after {
+        margin-left: 1rem;
     }
 }
 
@@ -75,4 +80,39 @@
     margin: 20px;
     padding: @measure + 0.5rem;
     border: 3px solid;
+}
+
+.widget-title {
+    font-size: 60px;
+    line-height: 4.5rem;
+    text-align: center;
+    margin-bottom: @measure * 2;
+    position: relative;
+    a {
+        background: @white;
+        padding: 0 @measure;
+        &:hover {
+            text-decoration: none;
+            color: @dark-orange;
+        }
+    }
+    &::before {
+        content: '';
+        background-image: url(/wp-content/themes/sfpublicpress/assets/lines.png);
+        height: 100px;
+        width: 100%;
+        max-width: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        left: 0;
+        top: 30%;
+        z-index: -1;
+        @media (max-width: 769px) {
+            display: none;
+        }
+    }
+    @media (max-width: 769px) {
+        font-size: 48px;
+    }
 }

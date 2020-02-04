@@ -1,0 +1,128 @@
+// local design tokens
+@globalnav-text: @black;
+@globalnav-text-hover: @white;
+@globalnav-background: @orange;
+@globalnav-background-hover: @dark-orange;
+@globalnav-font-size: 18px;
+@globalnav-font: @font-header;
+
+
+.global-nav-bg,
+.global-nav {
+	height: @navbarHeight;
+	background-color: @globalnav-background;
+}
+.global-nav {
+	font-family: @globalnav-font;
+
+	ul {
+		font-size: @globalnav-font-size;
+		a {
+			color: @globalnav-text;
+			background-color: transparent;
+			&:hover {
+				color: @globalnav-text-hover;
+				background-color: @globalnav-background-hover;
+			}
+		}
+	}
+	.nav-right .donate-btn {
+		margin: 0;
+		line-height: @navbarHeight;
+		padding: 0 0.5em;
+	}
+}
+#header-search {
+	display: block;
+	box-sizing: border-box;
+	margin-top: 0;
+	padding-top: 4px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	height: @navbarHeight;
+	max-width: unset;
+
+	background-color: @globalnav-background-hover;
+	color: @globalnav-text-hover;
+
+	.input-append {
+		line-height: @navbarHeight - 8px;
+		border-bottom: 1px solid @globalnav-text-hover;
+		border-left: 1px solid @globalnav-text-hover;
+	}
+	input[type=text] {
+		box-shadow: none;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		background-color: @globalnav-background-hover;
+		color: @globalnav-text-hover;
+		border: none;
+		font-family: @font-footer;
+		font-size: @globalnav-font-size;
+		&::placeholder {
+			font-family: @globalnav-font;
+			color: @globalnav-text-hover;
+		}
+	}
+	.btn {
+		border: none;
+		margin-left: 2px;
+		border-left: 1px solid @globalnav-text-hover;
+		background-color: @globalnav-background-hover;
+		color: @globalnav-text-hover;
+		font-family: @globalnav-font;
+		padding: 0 0.5em;
+
+		&:hover {
+			background-color: @black;
+		}
+	}
+}
+#header-search + .donate-btn {
+	margin-left: 0;
+	font-size: @globalnav-font-size;
+	border-left: 1px solid @globalnav-text;
+	border-right: 1px solid @globalnav-text;
+}
+.donate-btn {
+	.btn();
+}
+
+#menu-global-navigation,
+.global-nav .nav-right ul#header-social {
+	line-height: @navbarHeight;
+	li {
+		margin: 0;
+		padding: 0 0.5em;
+		max-height: @navbarHeight;
+		a {
+			margin: 0;
+			color: @globalnav-text;
+			i {
+				display: inline;
+				position: unset;
+			}
+		}
+		&:hover {
+			background-color: @globalnav-background-hover;
+			a {
+				color: @globalnav-text-hover;
+			}
+		}
+	}
+	li + li {
+		border-left: 1px solid @globalnav-text;
+	}
+}
+
+body #site-header {
+	text-align: center;
+	margin: @measure + 1rem 0;
+	.header_img {
+		max-width: 900px;
+		width: 100%;
+	}
+	@media (max-width: 782px) {
+		margin: 1rem 0;
+	}
+}

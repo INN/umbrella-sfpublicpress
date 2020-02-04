@@ -1,0 +1,225 @@
+@media ( max-width: 768px ) {
+	// override Largo
+	#site-header, #main-nav {
+		display: block;
+	}
+}
+#main-nav.navbar {
+	text-transform: uppercase;
+	background: @white;
+	border-top: 4px solid @black;
+	border-bottom: 0;
+	margin-bottom: @measure + 1rem;
+	@media ( max-width: 768px ) {
+		position: sticky;
+		top: 0;
+		.admin-bar & {
+			top: 32px;
+		}
+	}
+	@media ( max-width: 782px ) {
+		.admin-bar & {
+			top: 46px;
+		}
+	}
+	z-index: 10; // makes background color work, also prevents z-conflict with widgets
+
+	.nav {
+		padding: 10px 0;
+		float: none;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		flex-wrap: nowrap;
+		li {
+			a {
+				font-family: @font-header;
+				letter-spacing: 0.9px;
+                font-size: 18px;
+                &:hover {
+                    color: @dark-orange;
+                }
+			}
+		}
+		&.mobile-global-nav {
+			display: none;
+		}
+	}
+	&.has-overflow {
+		.nav {
+			justify-content: space-between; // so the menu button ends up against the right side
+		}
+	}
+
+	// the menu is wider than the page will permit
+	&.has-overflow .toggle-nav-bar,
+	&.has-overflow .btn-navbar {
+		display: block;
+	}
+
+	.reveal-when-open {
+		display: none;
+	}
+	&.open {
+		.reveal-when-open {
+			display: block;
+		}
+	}
+
+	&.open {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: block;
+		padding: 1em;
+		border: none;
+		background: @black;
+
+		.admin-bar & {
+			top: 32px;
+		}
+		@media ( max-width: 782px ) {
+			.admin-bar & {
+				top: 46px;
+			}
+		}
+
+		.navbar-inner {
+			box-sizing: border-box;
+			border: 2px solid @orange;
+			padding: 1.5em;
+			background: @black;
+		}
+
+
+		.nav {
+			display: block;
+			padding: 10px 0 0;
+			&:only-of-type {
+				padding: 10px 0;
+			}
+			li {
+				float: none;
+				border-bottom: 1px solid @gray;
+				&:first-of-type {
+					margin-top: 40px;
+					border-top: 1px solid @gray;
+				}
+				a {
+					color: @white;
+					&:hover {
+						color: @dark-orange;
+					}
+				}
+			}
+			&.mobile-global-nav {
+				padding-top: 0;
+				li {
+					&:first-of-type {
+						margin-top: 0;
+						border-top: 0;
+					}
+				}
+			}
+			
+		}
+
+		h2 {
+			margin: -2.25em auto 0;
+			background-color: @black;
+			color: @white;
+			padding: 1rem;
+			z-index: 1;
+			font-size: 24px;
+			line-height: 1;
+			width: min-content;
+			text-align: center;
+			position: absolute;
+			left: 40%;
+			right: 40%;
+		}
+
+		.toggle-nav-bar {
+			.btn-navbar {
+				display: none;
+			}
+			.close {
+				background-color: @orange;
+				color: @white;
+				border: none;
+				line-height: 44px;
+				vertical-align: middle;
+				padding: 0;
+				.dashicons,
+				.dashicons::before {
+					font-size: 44px;
+					height: 44px;
+					width: 44px;
+				}
+			}
+			position: absolute;
+			// outset to get outside the padding
+			top: -1.5em;
+			right: -1.5em;
+			background-color: @orange;
+			color: @white;
+		}
+	}
+
+	// prevent these list items from adopting the li styles from the body
+	ul li {
+		&::before {
+			display: none;
+		}
+	}
+}
+#main-nav.transitioning {
+	// copying Largo styles
+	overflow: hidden;
+}
+
+.navbar .nav > li > a {
+	color: @black;
+	white-space: nowrap;
+	&:hover {
+		background-color: transparent;
+		color: @blue;
+	}
+}
+.nav > li.overflowed {
+	display: none;
+	.open & {
+		display: block;
+	}
+}
+.toggle-nav-bar {
+	// normally hidden; shows when the js knows that there's an overflow
+	display: none;
+	float: left;
+	border-left: 1px solid @gray;
+	.btn-navbar {
+		padding-top: 0;
+		padding-bottom: 0;;
+	}
+	// normally hidden; shows when the nav is open
+	.close {
+		display: none;
+	}
+	// has to be more specific than Largo's .navbar .btn-navbar .icon-bar
+	li& .bars span.icon-bar {
+		background-color: @black;
+		margin: 0 auto;
+		height: 2px;
+		& + .icon-bar {
+			margin-top: 4px;
+		}
+	}
+	&:hover .icon-bar {
+		background-color: @blue;
+	}
+	.menu-label {
+		line-height: 1.6;
+	}
+}
