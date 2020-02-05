@@ -27,19 +27,23 @@
     font-size: 18px;
     letter-spacing: 0.9px;
     text-transform: uppercase;
+    position: relative;
     &:hover {
         text-decoration: none;
         color: @dark-orange;
     }
     &::after {
+        width: 1ch;
+        position: relative;
         content: "\f344";
         font-family: 'dashicons';
         margin-left: 0.5rem;
         vertical-align: top;
-        transition: margin-left 0.3s;
+        transition: left 0.3s;
+        left: 0;
     }
     &:hover::after {
-        margin-left: 1rem;
+        left: 10px;
     }
 }
 

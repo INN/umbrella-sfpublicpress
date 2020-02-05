@@ -144,3 +144,71 @@
         text-align: center;
     }
 }
+.widget.sfpublicpress-subscribe {
+    background: @blue;
+    &.rev {
+        background: @orange;
+        .widgettitle {
+            background: @orange;
+        }
+        .inner-widget-container {
+            form {
+                button {
+                    &:hover {
+                        color: @white;
+                    }
+                }
+            }
+        }
+    }
+    .inner-widget-container {
+        .inner-border;
+        border-color: @black;
+        .widgettitle {
+            text-transform: none;
+            font-size: 28px;
+            line-height: 2.1rem;
+            padding: 0;
+            color: @black;
+            margin-bottom: @measure;
+        }
+        p {
+            color: @black;
+            line-height: 1.5rem;
+        }
+        form {
+            border-left: 1px solid @gray;
+            border-bottom: 1px solid @gray;
+            padding: 0 1rem;
+            input[type="email"] {
+                background: transparent;
+                border: 0!important;
+                color: @black;
+                text-transform: uppercase;
+                font-family: @font-header;
+                font-size: 18px;
+                line-height: 40px;
+                letter-spacing: 0.45px;
+                display: inline-block;
+                max-width: 80%;
+                margin-bottom: 0;
+                box-shadow: none!important;
+                -webkit-box-shadow: none!important;
+                padding: 0;
+                &::placeholder {
+                    color: @black;
+                }
+            }
+            button {
+                display: inline-block;
+                max-width: 10%;
+                background: transparent;
+                border: 0;
+                border-left: 1px solid @gray;
+                float: right;
+                margin-top: 5px;
+                .view-more-link
+            }
+        }
+    }
+}
