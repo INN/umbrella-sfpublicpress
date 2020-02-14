@@ -222,10 +222,13 @@
             flex-direction: column;
             flex: 1 1 0px;
             padding: 0 1rem;
+            > a:first-child {
+                text-align: center;
+            }
             .wp-post-image {
                 float: none;
-                margin: 0;
-                width: 100%;
+                margin: 0 auto;
+                width: unset;
                 order: 1;
                 margin-bottom: @measure;
             }
