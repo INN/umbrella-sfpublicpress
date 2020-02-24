@@ -62,7 +62,6 @@
         }
     }
 }
-
 .widget.sfpublicpress-podcasts {
     ul {
         display: flex;
@@ -227,6 +226,70 @@
                     font-size: 15px;
                     line-height: 28px;
                     color: @gray;
+                }
+            }
+        }
+    }
+}
+.widget.largo-related-posts {
+    .widgettitle {
+        .widget-title();
+    }
+    ul.related {
+        display: flex;
+        li {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0px;
+            padding: 0 1rem;
+            > a:first-child {
+                text-align: center;
+            }
+            .wp-post-image {
+                float: none;
+                margin: 0 auto;
+                width: unset;
+                order: 1;
+                margin-bottom: @measure;
+            }
+            .byline {
+                order: 2;
+                .by-author {
+                    .sep, 
+                    .entry-date {
+                        display: none;
+                    }
+                }
+            }
+            h4 {
+                order: 3;
+                a {
+                    font-family: @font-header;
+                    font-size: 28px!important;
+                    line-height: 2.5rem!important;
+                    text-transform: none!important;
+                    .view-more-link();
+                }
+            }
+            div {
+                display: none;
+            }
+        }
+        @media (max-width: 769px) {
+            flex-direction: column;
+            li {
+                flex: unset;
+                padding: 0 0 @measure;
+                margin-bottom: 0;
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid @gray;
+                    margin-bottom: @measure;
+                }
+                .byline {
+                    display: block;
+                }
+                h4 {
+                    margin-bottom: 0;
                 }
             }
         }
