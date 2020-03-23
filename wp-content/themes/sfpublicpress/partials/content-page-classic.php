@@ -29,12 +29,12 @@
     
     <div class="page-content-area span8">
         <div class="entry-content clearfix" itemprop="articleBody">
+            <?php do_action('largo_before_page_content'); ?>
+
             <?php the_content(); ?>
             
             <?php do_action('largo_after_page_content'); ?>
         </div><!-- .entry-content -->
-
-        <?php do_action('largo_after_page_content'); ?>
 
         <footer class="post-meta bottom-meta">
     </div>
