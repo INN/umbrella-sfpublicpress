@@ -36,13 +36,10 @@
             <?php do_action('largo_after_page_content'); ?>
         </div><!-- .entry-content -->
 
-        <footer class="post-meta bottom-meta">
     </div>
     <div class="sidebar-content-area span4">
         <?php get_sidebar(); ?>
     </div>
-
-	</footer><!-- /.post-meta -->
 
 	<?php do_action( 'largo_after_post_footer' ); ?>
 
