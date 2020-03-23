@@ -1,0 +1,29 @@
+.page {
+    &.classic {
+        .page-content-area {
+            margin-left: 0;
+            @media (max-width: 769px) {
+                width: 100%;
+            }
+        }
+        .sidebar-content-area {
+            #sidebar {
+                width: 100%;
+                .sfpublicpress-podcasts {
+                    ul {
+                        display: block;
+                        li {
+                            border-bottom: 1px solid @light-gray;
+                            border-right: 0;
+                            margin-bottom: @measure;
+                        }
+                    }
+                }
+
+            }
+            @media (max-width: 769px) {
+                display: none;
+            }
+        }
+    }
+}

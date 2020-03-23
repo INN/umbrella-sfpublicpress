@@ -27,23 +27,14 @@
 		do_action( 'largo_after_hero' );
 	?>
     
-    <div class="article-content-area span8">
-        <div class="byline">
-            <?php 
-                echo '<div class="byline-date">' . get_the_date( 'm.d.Y' ) . '</div>';
-                echo '<span class="sep"> | </span>';
-                largo_byline( true, true, get_the_ID() ); 
-                if ( !of_get_option( 'single_social_icons' ) == false ) {
-                    echo '<span class="sep"> | </span>';
-                    largo_post_social_links();
-                }
-            ?>
-        </div>
+    <div class="page-content-area span8">
         <div class="entry-content clearfix" itemprop="articleBody">
-            <?php largo_entry_content( $post ); ?>
-        </div><!-- .entry-content -->
+            <?php do_action('largo_before_page_content'); ?>
 
-        <?php do_action( 'largo_after_post_content' ); ?>
+            <?php the_content(); ?>
+            
+            <?php do_action('largo_after_page_content'); ?>
+        </div><!-- .entry-content -->
 
     </div>
     <div class="sidebar-content-area span4">
