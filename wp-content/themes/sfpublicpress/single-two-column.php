@@ -21,7 +21,7 @@ get_header();
 
 			$shown_ids[] = get_the_ID();
 
-			$partial = ( is_page() ) ? 'page' : 'single-classic';
+			$partial = ( is_page() ) ? 'page-classic' : 'single-classic';
 
 			get_template_part( 'partials/content', $partial );
 
