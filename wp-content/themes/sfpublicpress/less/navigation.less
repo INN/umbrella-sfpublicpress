@@ -9,7 +9,7 @@
 	background: @white;
 	border-top: 4px solid @black;
 	border-bottom: 0;
-	margin-bottom: @measure + 1rem;
+	margin-bottom: @measure;
 	@media ( max-width: 768px ) {
 		position: sticky;
 		top: 0;
@@ -25,7 +25,6 @@
 	z-index: 10; // makes background color work, also prevents z-conflict with widgets
 
 	.nav {
-		padding: 10px 0;
 		float: none;
 		display: flex;
 		flex-direction: row;
@@ -48,6 +47,7 @@
 	&.has-overflow {
 		.nav {
 			justify-content: space-between; // so the menu button ends up against the right side
+			padding: 10px 0;
 		}
 	}
 
