@@ -59,7 +59,7 @@
             .largo-follow {
                 display: inline-block;
                 margin: 0 1rem;
-                span {
+                span:not(.popover){
                     background: transparent;
                     a {
                         font-size: initial;
@@ -89,6 +89,23 @@
                         }
                         .hidden-phone {
                             display: none;
+                        }
+                    }
+                }
+                span.popover {
+                    ul {
+                        li {
+                            margin-bottom: 1rem;
+                            a {
+                                i {
+                                    width: 15px;
+                                    height: 15px;
+                                    line-height: 15px;
+                                }
+                                span {
+                                    margin-left: @measure * 2;
+                                }
+                            }
                         }
                     }
                 }

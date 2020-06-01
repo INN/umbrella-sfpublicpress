@@ -11,8 +11,8 @@ body {
         color: @black;
     }
 	p {
-        color: @gray;
-        font-size: 20px;
+        color: @black;
+        font-size: 22px;
         line-height: 1.8rem;
     }
     .widgettitle {
@@ -70,6 +70,11 @@ body {
             }
         }
     }
+    ul,
+    ol {
+        font-size: 22px;
+        color: @black;
+    }
     ul {
         list-style: none;
         li::before {
@@ -80,6 +85,9 @@ body {
             display: inline-block;
             margin-left: -1em;
         }
+    }
+    .wp-block-button .wp-block-button__link {
+        font-size: 22px;
     }
 }
 p.has-drop-cap:not(:focus)::first-letter {
