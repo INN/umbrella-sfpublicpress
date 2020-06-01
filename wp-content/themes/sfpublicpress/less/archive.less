@@ -1,0 +1,161 @@
+.archive {
+    header.archive-background {
+        margin: 0 0 @measure * 2!important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        .rss-link {
+            align-self: flex-end;
+        }
+        .page-title {
+            font-size: 80px;
+            line-height: 6rem;
+            margin-bottom: @measure;
+            padding-top: 0!important;
+            color: @black;
+            order: 0;
+        }
+        p {
+            color: @orange;
+            font-family: @font-body;
+            font-size: 24px;
+            line-height: 2.3rem;
+            margin-bottom: @measure;
+        }
+        .hero {
+            text-align: center;
+            order: 2;
+            margin-bottom: @measure * 2;
+            background: transparent;
+            img {
+                float: none;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+        }
+        @media (max-width: 769px) {
+            .fn {
+                font-size: 40px;
+                line-height: 3rem;
+            }
+            p {
+                font-size: 19px;
+                line-height: 2rem;
+            }
+        }
+    }
+    .primary-featured-post {
+        h2.entry-title {
+            font-size: 36px;
+        }
+    }
+    .secondary-featured-post {
+        h2.entry-title {
+            font-size: 24px;
+            line-height: inherit;
+        }
+    }
+    .byline {
+        font-family: @font-header;
+        color: @black;
+        font-size: 18px;
+        letter-spacing: 0.9px;
+        line-height: 2rem;
+        .byline-date {
+            margin-right: 0.5rem;
+        }
+        .by-author {
+            margin: 0 0.5rem;
+        }
+        .edit-link {
+            display: none;
+        }
+    }
+    &.author {
+        header.archive-background {
+            margin: 0 0 @measure * 2!important;
+            .author-box {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                .fn {
+                    font-size: 80px;
+                    line-height: 6rem;
+                    margin-bottom: @measure;
+                    padding-top: 0!important;
+                    color: @black;
+                    order: 0;
+                }
+                p {
+                    color: @orange;
+                    font-family: @font-body;
+                    font-size: 24px;
+                    line-height: 2.3rem;
+                    margin-bottom: @measure;
+                }
+                .photo {
+                    text-align: center;
+                    order: 2;
+                    margin-bottom: @measure * 2;
+                    .avatar {
+                        float: none;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                    }
+                }
+                .social-links {
+                    display: inline-block;
+                    margin: 0 1rem;
+                    order: 3;
+                    li {
+                        background: transparent;
+                        a {
+                            font-size: initial;
+                            padding: 0;
+                            margin: 0 20px 0 0!important;
+                            background: transparent;
+                            i {
+                                color: white;
+                                width: 34px;
+                                height: 34px;
+                                border-radius: 50%;
+                                border: 1px solid @orange;
+                                background: @orange;
+                                text-align: center;
+                                line-height: 34px;
+                                vertical-align: middle;
+                                padding: 5.5px 7.5px;
+                                margin-right: 0;
+                                margin-left: 0;
+                                &:hover {
+                                    color: @white;
+                                    background: @black;
+                                    border: 1px solid @black;
+                                }
+                                &::before {
+                                    margin-right: 0;
+                                    font-size: inherit;
+                                }
+                            }
+                            .hidden-phone {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                @media (max-width: 769px) {
+                    .fn {
+                        font-size: 40px;
+                        line-height: 3rem;
+                    }
+                    p {
+                        font-size: 19px;
+                        line-height: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
