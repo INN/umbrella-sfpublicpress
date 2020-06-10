@@ -78,8 +78,10 @@ function sfpp_largo_custom_avatar( $avatar, $id_or_email, $args ) {
 
     if ( $user && is_object( $user ) ) {
 
-		if( function_exists( 'largo_get_user_avatar_id' ) ) {
-			$avatar = wp_get_attachment_image( largo_get_user_avatar_id( $user->ID ), 96, false, array( 'alt' => $user->display_name ) );
+		if( function_exists( 'largo_has_avatar' ) && function_exists( 'largo_get_user_avatar_id' ) ) {
+			if( largo_has_avatar( $user->user_email ) ) {
+				$avatar = wp_get_attachment_image( largo_get_user_avatar_id( $user->ID ), 96, false, array( 'alt' => $user->display_name ) );
+			}
 		}
 
     }
