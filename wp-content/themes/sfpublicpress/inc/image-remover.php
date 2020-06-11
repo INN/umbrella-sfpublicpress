@@ -1,6 +1,6 @@
 <?php
 /**
- * To remove copies of the post featured image that are found in the post content
+ * To remove copies of the post featured image that are found in the post_content as Image Blocks
  *
  * @link https://github.com/INN/umbrella-sfpublicpress/issues/63
  */
@@ -8,10 +8,12 @@
 /**
  * SFPP Image Remover
  *
- * A singleton to prevent accidental multiple registration of its hooks
+ * Made as a singleton to prevent accidental multiple registration of its hooks
  *
  */
 class SFPP_Image_Remover {
+	private static $debug = true;
+	private static $verbose = true;
 	// this is a Singleton class
 	private static $instance = null;
 
@@ -74,7 +76,7 @@ class SFPP_Image_Remover {
 	}
 
 	/**
-	 * Wrapper for generating the modified post content and saving it.
+	 * Generate the modified post content and save it, if the modification changes anything.
 	 *
 	 * @param Int $id The ID of the post to munge
 	 * @return '1'|String|false false if something went wrong; 1 if the post did not need to be edited, HTML if that was removed from the post
@@ -93,10 +95,10 @@ class SFPP_Image_Remover {
 		// don't exonerate a post unless we're sure.
 		$maybe_clear = false;
 
-		// will contain the selectors by which we remove elements from the page
+		// will contain the selectors by which we remove elements from the page.
 		$strings_to_remove = array();
-		// there's no variable for holding the removed strings;
-		// instead we diff the working post content from the original post content.
+		// will contain mixed items removed from the post.
+		$removed_things = array();
 
 		// get the thumbnail ID.
 		$thumbnail_id = get_post_thumbnail_id( $id );
@@ -115,11 +117,9 @@ class SFPP_Image_Remover {
 		foreach ( $thumbnail_metadata['sizes'] as $size => $array ) {
 			$search_array[] = $array['file'];
 		}
-		error_log(var_export( $search_array, true));
 
 		foreach ( $search_array as $search_string ) {
 			$return = stripos( $working_post_content, $search_string );
-			error_log(var_export( $return, true));
 			if ( false !== $return ) {
 				$strings_to_remove[] = $search_string;
 			}
@@ -132,29 +132,48 @@ class SFPP_Image_Remover {
 		if ( ! empty( $strings_to_remove ) ) {
 			// we have the string to remove
 			if ( has_blocks( $id ) ) {
-				// do this the block way
-				// carefully remove Gutenberg blocks? something with `parse_blocks`
+				// do this the block way by turning the post content into an array of blocks
+				$blockarray = parse_blocks( $working_post_content );
+
+				foreach ( $strings_to_remove as $string_to_remove ) {
+					foreach ( $blockarray as $blockarray_index => $block ) {
+						// Because of how Gravityswitch added these items, they're not going to be as child blocks.
+						// We're only concerned with top-level blocks.
+						// That's why this doesn't recurse.
+						if ( 'core/image' === $block['blockName'] ) {
+							if ( false !== strpos( $block['innerHTML'], $string_to_remove ) ) {
+								$removed_items[] = array_splice( $blockarray, $blockarray_index, 1 );
+							}
+						}
+					}
+				}
+
+				// does anything need to be saved?
+				if ( ! empty( $removed_items ) ) {
+					// put the post_content back together, modifiying the var so that $maybe_save will be set to true
+					$working_post_content = implode( array_map( 'serialize_block', $blockarray ), "\n" );
+				}
 			} else {
-				// do this the non-block way
-				// then strip resultant empty paragraph tags
+				// we're not concerned about situations where there aren't blocks.
+				// the reason is that the images we're trying to remove were added as blocks,
+				// and though there are images that fit the "duplicates the post thumbnail" criteria
+				// that are not blocks, removing them doesn't fit the goal of this code.
+				// @see https://github.com/INN/umbrella-sfpublicpress/issues/63#issuecomment-642855442
 			}
 		}
 
 
 		// if we have found things to replace, either regex or spin up a DOMDocument to replace the things
-		// @todo need example post IDs
 
-		// here we should update $this_post->post_content with the new version
 
-		// compare working post content with original post content, and save what has changed
+		// compare working post content with original post content, and save the difference in the post meta
 		if ( $working_post_content !== $original_post_content ) {
 			$maybe_save = true;
 			// @todo we may need to append `\n` to both post_contents to get a meaningful diff: https://www.php.net/manual/en/ref.xdiff.php#51588
-			$maybe_clear = xdiff_string_diff( $original_post_content . "\n" , $working_post_content . "\n" );
+			$maybe_clear = maybe_serialize( $removed_items );
 		} else {
 			$maybe_clear = '1';
 		}
-
 
 		// if the post content has changed, save it
 		if ( true === $maybe_save ) {
@@ -165,28 +184,30 @@ class SFPP_Image_Remover {
 			$postarr = wp_slash( $postarr );
 			$postarr['post_content'] = wp_slash( $working_post_content );
 
-			if ( WP_DEBUG ) {
+			if ( SFPP_Image_Remover::$verbose ) {
 				$log = sprintf(
 					'post %1$s: post content to save: %2$s',
 					$id,
 					var_export( $postarr, true )
 				);
 				error_log(var_export( $log, true));
-			} else {
+			}
+			if ( ! SFPP_Image_Remover::$debug ) {
 				// https://developer.wordpress.org/reference/functions/wp_update_post/
 				wp_update_post( $this_post );
 			}
 		}
 
 		if ( !empty( $maybe_clear ) ) {
-			if ( WP_DEBUG ) {
+			if ( SFPP_Image_Remover::$verbose ) {
 				$log = sprintf(
 					'post %1$s: $maybe_clear: %2$s',
 					$id,
 					$maybe_clear
 				);
 				error_log(var_export( $log, true));
-			} else {
+			} 
+			if ( ! SFPP_Image_Remover::$debug ) {
 				update_post_meta( $id, SFPP_Image_Remover::$meta_key, $maybe_clear );
 			}
 		}
