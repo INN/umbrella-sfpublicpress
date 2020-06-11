@@ -12,8 +12,7 @@
  *
  */
 class SFPP_Image_Remover {
-	private static $debug = true;
-	private static $verbose = true;
+	private static $debug = false;
 	// this is a Singleton class
 	private static $instance = null;
 
@@ -163,13 +162,10 @@ class SFPP_Image_Remover {
 		}
 
 
-		// if we have found things to replace, either regex or spin up a DOMDocument to replace the things
-
-
-		// compare working post content with original post content, and save the difference in the post meta
+		// compare working post content with original post content to determine whether it changed
 		if ( $working_post_content !== $original_post_content ) {
 			$maybe_save = true;
-			// @todo we may need to append `\n` to both post_contents to get a meaningful diff: https://www.php.net/manual/en/ref.xdiff.php#51588
+			// can't use xdiff; instead we just save the removed items
 			$maybe_clear = maybe_serialize( $removed_items );
 		} else {
 			$maybe_clear = '1';
@@ -184,7 +180,7 @@ class SFPP_Image_Remover {
 			$postarr = wp_slash( $postarr );
 			$postarr['post_content'] = wp_slash( $working_post_content );
 
-			if ( SFPP_Image_Remover::$verbose ) {
+			if ( false ) {
 				$log = sprintf(
 					'post %1$s: post content to save: %2$s',
 					$id,
@@ -194,12 +190,13 @@ class SFPP_Image_Remover {
 			}
 			if ( ! SFPP_Image_Remover::$debug ) {
 				// https://developer.wordpress.org/reference/functions/wp_update_post/
-				wp_update_post( $this_post );
+				$wp_update_post = wp_update_post( $this_post );
+				error_log(var_export( $wp_update_post, true));
 			}
 		}
 
 		if ( !empty( $maybe_clear ) ) {
-			if ( SFPP_Image_Remover::$verbose ) {
+			if ( false ) {
 				$log = sprintf(
 					'post %1$s: $maybe_clear: %2$s',
 					$id,
