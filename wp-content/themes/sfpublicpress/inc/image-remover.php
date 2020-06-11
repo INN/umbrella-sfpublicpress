@@ -20,7 +20,7 @@ class SFPP_Image_Remover {
 
 	// register all the things
 	private function __construct() {
-		add_action( 'the_content', array( $this, 'filter_the_content' ) );
+		add_action( 'the_content', array( 'SFPP_Image_Remover', 'filter_the_content' ) );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class SFPP_Image_Remover {
 
 		// check if it has already been run against this post,
 		// in which case we need not bother running the expensive filter.
-		$meta = get_post_meta( get_the_ID(), $this::$meta_key, true );
+		$meta = get_post_meta( get_the_ID(), SFPP_Image_Remover::$meta_key, true );
 		if ( ! empty( $meta ) ) {
 			return $content;
 		}
@@ -68,7 +68,7 @@ class SFPP_Image_Remover {
 		// @todo are there any other conditions under which we should NOT run the filter?
 
 		// run the filter
-		$this::munge( get_the_ID() );
+		SFPP_Image_Remover::munge( get_the_ID() );
 
 		return $content;
 	}
@@ -123,7 +123,7 @@ class SFPP_Image_Remover {
 		}
 
 		if ( !empty( $maybe_clear ) ) {
-			update_post_meta( $id, $this::$meta_key, $maybe_clear );
+			update_post_meta( $id, SFPP_Image_Remover::$meta_key, $maybe_clear );
 		}
 
 		return $maybe_clear;
