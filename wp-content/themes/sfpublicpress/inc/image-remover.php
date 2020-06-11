@@ -65,8 +65,6 @@ class SFPP_Image_Remover {
 			return $content;
 		}
 
-		error_log(var_export( 'aaa', true));
-
 		// @todo are there any other conditions under which we should NOT run the filter?
 
 		// run the filter
@@ -82,28 +80,66 @@ class SFPP_Image_Remover {
 	 * @return '1'|String|false false if something went wrong; 1 if the post did not need to be edited, HTML if that was removed from the post
 	 */
 	private static function munge( $id ) {
+		/*
+		 * Setup
+		 */
+
+		// get the raw post content.
 		$this_post = get_post( $id );
-		// default is to not update the post content, unless it was saved
-		$maybe_save = false;
-		// don't exonerate a post unless we're sure
-		$maybe_clear = false;
-
-		// get the thumbnail ID
-		$thumbnail_id = get_post_thumbnail_id( $id );
-		// get the image metadata
-		$thumbnail_metadata = wp_get_attachment_metadata( $thumbnail_id );
-		error_log(var_export( $thumbnail_metadata, true));
-
-		// get the raw post content
 		$working_post_content = $original_post_content = $this_post->post_content;
 
-		// search and replace
+		// default is to not update the post content, unless it was saved.
+		$maybe_save = false;
+		// don't exonerate a post unless we're sure.
+		$maybe_clear = false;
 
-		// search by ID
+		// will contain the selectors by which we remove elements from the page
+		$strings_to_remove = array();
+		// there's no variable for holding the removed strings;
+		// instead we diff the working post content from the original post content.
+
+		// get the thumbnail ID.
+		$thumbnail_id = get_post_thumbnail_id( $id );
+		// get the post thumbnail image metadata.
+		$thumbnail_metadata = wp_get_attachment_metadata( $thumbnail_id );
+
+		/*
+		 * Search for things to remove
+		 */
+
 		// search by URL match for the original image URL
 		// search by URL match for any image size of the original image URL
-		// carefully remove Gutenberg blocks?
-		// then strip resultant empty paragraph tags
+		// this catches Image Blocks and img tags and old-style captioned images
+		$search_array[] = $thumbnail_metadata['file'];
+
+		foreach ( $thumbnail_metadata['sizes'] as $size => $array ) {
+			$search_array[] = $array['file'];
+		}
+		error_log(var_export( $search_array, true));
+
+		foreach ( $search_array as $search_string ) {
+			$return = stripos( $working_post_content, $search_string );
+			error_log(var_export( $return, true));
+			if ( false !== $return ) {
+				$strings_to_remove[] = $search_string;
+			}
+		}
+
+		/*
+		 * Remove
+		 */
+
+		if ( ! empty( $strings_to_remove ) ) {
+			// we have the string to remove
+			if ( has_blocks( $id ) ) {
+				// do this the block way
+				// carefully remove Gutenberg blocks? something with `parse_blocks`
+			} else {
+				// do this the non-block way
+				// then strip resultant empty paragraph tags
+			}
+		}
+
 
 		// if we have found things to replace, either regex or spin up a DOMDocument to replace the things
 		// @todo need example post IDs
@@ -114,15 +150,32 @@ class SFPP_Image_Remover {
 		if ( $working_post_content !== $original_post_content ) {
 			$maybe_save = true;
 			// @todo we may need to append `\n` to both post_contents to get a meaningful diff: https://www.php.net/manual/en/ref.xdiff.php#51588
-			$maybe_clear = xdiff_string_diff( $original_post_content, $working_post_content );
+			$maybe_clear = xdiff_string_diff( $original_post_content . "\n" , $working_post_content . "\n" );
 		} else {
 			$maybe_clear = '1';
 		}
 
+
 		// if the post content has changed, save it
-		if ( $maybe_save = true ) {
-			// https://developer.wordpress.org/reference/functions/wp_update_post/
-			wp_update_post( $this_post );
+		if ( true === $maybe_save ) {
+			// convert the WP_Post $this_post to an array,
+			// using technique from wp_update_post,
+			// so that we may set the post_content
+			$postarr = get_object_vars( $this_post );
+			$postarr = wp_slash( $postarr );
+			$postarr['post_content'] = wp_slash( $working_post_content );
+
+			if ( WP_DEBUG ) {
+				$log = sprintf(
+					'post %1$s: post content to save: %2$s',
+					$id,
+					var_export( $postarr, true )
+				);
+				error_log(var_export( $log, true));
+			} else {
+				// https://developer.wordpress.org/reference/functions/wp_update_post/
+				wp_update_post( $this_post );
+			}
 		}
 
 		if ( !empty( $maybe_clear ) ) {
