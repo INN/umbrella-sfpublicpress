@@ -12,7 +12,7 @@ body {
     }
 	p {
         color: @black;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.8rem;
     }
     .widgettitle {
@@ -45,9 +45,24 @@ body {
     }
 }
 .entry-content {
+    h1 {
+        font-size: 54px;
+        line-height: 3.25rem;
+    }
+    h2 {
+        font-size: 48px;
+        line-height: 3.25rem;
+    }
+    h3 {
+        font-size: 28px;
+    }
+    h4 {
+        font-size: 16px;
+    }
 	h1, h2, h3, h4, h5, h6 {
 		font-family: @font-header;
-		color: @black;
+        color: @black;
+        line-height: 2rem;
     }
     a {
         &:hover,
@@ -72,7 +87,7 @@ body {
     }
     ul,
     ol {
-        font-size: 22px;
+        font-size: 20px;
         color: @black;
     }
     ul {
@@ -87,7 +102,7 @@ body {
         }
     }
     .wp-block-button .wp-block-button__link {
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 p.has-drop-cap:not(:focus)::first-letter {
