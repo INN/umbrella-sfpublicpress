@@ -151,6 +151,7 @@ class SFPP_Image_Remover {
 				// does anything need to be saved?
 				if ( ! empty( $removed_items ) ) {
 					// put the post_content back together, modifiying the var so that $maybe_save will be set to true
+					
 					$working_post_content = implode( array_map( 'serialize_block', $blockarray ), "\n" );
 				}
 			} else {
@@ -191,8 +192,8 @@ class SFPP_Image_Remover {
 			}
 			if ( ! SFPP_Image_Remover::$debug ) {
 				// https://developer.wordpress.org/reference/functions/wp_update_post/
-				$wp_update_post = wp_update_post( $this_post );
-				error_log(var_export( $wp_update_post, true));
+				$wp_update_post = wp_update_post( $postarr );
+				error_log(var_export( "SFPP_Image_Remover ran on post: " . (str) $wp_update_post, true));
 			}
 		}
 
