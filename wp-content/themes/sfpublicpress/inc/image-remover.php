@@ -193,7 +193,7 @@ class SFPP_Image_Remover {
 			if ( ! SFPP_Image_Remover::$debug ) {
 				// https://developer.wordpress.org/reference/functions/wp_update_post/
 				$wp_update_post = wp_update_post( $postarr );
-				error_log(var_export( "SFPP_Image_Remover ran on post: " . (str) $wp_update_post, true));
+				error_log(var_export( "SFPP_Image_Remover ran on post: " . $wp_update_post, true));
 			}
 		}
 
