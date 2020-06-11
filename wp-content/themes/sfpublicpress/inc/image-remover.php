@@ -65,6 +65,8 @@ class SFPP_Image_Remover {
 			return $content;
 		}
 
+		error_log(var_export( 'aaa', true));
+
 		// @todo are there any other conditions under which we should NOT run the filter?
 
 		// run the filter
@@ -90,6 +92,7 @@ class SFPP_Image_Remover {
 		$thumbnail_id = get_post_thumbnail_id( $id );
 		// get the image metadata
 		$thumbnail_metadata = wp_get_attachment_metadata( $thumbnail_id );
+		error_log(var_export( $thumbnail_metadata, true));
 
 		// get the raw post content
 		$working_post_content = $original_post_content = $this_post->post_content;
@@ -123,7 +126,16 @@ class SFPP_Image_Remover {
 		}
 
 		if ( !empty( $maybe_clear ) ) {
-			update_post_meta( $id, SFPP_Image_Remover::$meta_key, $maybe_clear );
+			if ( WP_DEBUG ) {
+				$log = sprintf(
+					'post %1$s: $maybe_clear: %2$s',
+					$id,
+					$maybe_clear
+				);
+				error_log(var_export( , true));
+			} else {
+				update_post_meta( $id, SFPP_Image_Remover::$meta_key, $maybe_clear );
+			}
 		}
 
 		return $maybe_clear;
