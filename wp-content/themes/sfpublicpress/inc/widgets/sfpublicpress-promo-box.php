@@ -32,7 +32,7 @@ class sfpublicpress_promo_box_widget extends WP_Widget {
 	 * @author Modern Tribe, Inc.
 	 */
 	function __construct() {
-		$widget_opts = array(
+		$widget_ops = array(
 			'classname' => 'sfpublicpress-promo-box',
 			'description'=> __('Widget to display promo boxes.', 'sfpublicpress')
 		);
@@ -224,7 +224,7 @@ class sfpublicpress_promo_box_widget extends WP_Widget {
 				'class' => 	$this->widget_options['classname'].'-image-link',
 				'title' => ( !empty( $instance['alt'] ) ) ? $instance['alt'] : $instance['title'],
 			);
-			if ($instance['track']) $attr['class'] .= ' image-click-track';
+			if ( isset( $instance['track'] ) ) $attr['class'] .= ' image-click-track';
 			$attr = apply_filters('image_widget_link_attributes', $attr, $instance );
 			$attr = array_map( 'esc_attr', $attr );
 			$output = '<a';
