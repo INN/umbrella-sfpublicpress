@@ -80,13 +80,11 @@ class SFPP_Image_Remover {
 	 * @return '1'|String|false false if something went wrong; 1 if the post did not need to be edited, HTML if that was removed from the post
 	 */
 	private static function munge( $id ) {
-		$post = get_post( $id );
+		$this_post = get_post( $id );
 		// default is to not update the post content, unless it was saved
 		$maybe_save = false;
 		// don't exonerate a post unless we're sure
 		$maybe_clear = false;
-		// a place to save what was removed from the post;
-		$clipping = '';
 
 		// get the thumbnail ID
 		$thumbnail_id = get_post_thumbnail_id( $id );
@@ -94,14 +92,26 @@ class SFPP_Image_Remover {
 		$thumbnail_metadata = wp_get_attachment_metadata( $thumbnail_id );
 
 		// get the raw post content
-		$working_post_content = $original_post_content = $post->post_content;
+		$working_post_content = $original_post_content = $this_post->post_content;
 
-		// search
-		// replace
-		// compare working post content with original post content
+		// search and replace
+
+		// search by ID
+		// search by URL match for the original image URL
+		// search by URL match for any image size of the original image URL
+		// carefully remove Gutenberg blocks?
+		// then strip resultant empty paragraph tags
+
+		// if we have found things to replace, either regex or spin up a DOMDocument to replace the things
+		// @todo need example post IDs
+
+		// here we should update $this_post->post_content with the new version
+
+		// compare working post content with original post content, and save what has changed
 		if ( $working_post_content !== $original_post_content ) {
 			$maybe_save = true;
-			$maybe_clear = $clipping;
+			// @todo we may need to append `\n` to both post_contents to get a meaningful diff: https://www.php.net/manual/en/ref.xdiff.php#51588
+			$maybe_clear = xdiff_string_diff( $original_post_content, $working_post_content );
 		} else {
 			$maybe_clear = '1';
 		}
@@ -109,7 +119,7 @@ class SFPP_Image_Remover {
 		// if the post content has changed, save it
 		if ( $maybe_save = true ) {
 			// https://developer.wordpress.org/reference/functions/wp_update_post/
-			wp_update_post( $post );
+			wp_update_post( $this_post );
 		}
 
 		if ( !empty( $maybe_clear ) ) {
