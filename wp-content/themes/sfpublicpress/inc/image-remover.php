@@ -12,6 +12,7 @@
  *
  */
 class SFPP_Image_Remover {
+	// set this to true to prevent writing to the database.
 	private static $debug = false;
 	// this is a Singleton class
 	private static $instance = null;
