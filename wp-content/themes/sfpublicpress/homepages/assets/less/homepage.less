@@ -16,8 +16,8 @@
         margin: @measure 0;
         a {
             font-family: @font-header;
-            font-size: 60px;
-            line-height: 4.5rem;
+            font-size: 54px;
+            line-height: 3.25rem;
             color: @orange;
             &:hover {
                 text-decoration: none;
@@ -77,8 +77,8 @@
                         margin-bottom: 0;
                         margin-top: 12px;
                         a {
-                            font-size: 28px;
-                            line-height: 2.5rem;
+                            font-size: 26px;
+                            line-height: 2rem;
                             color: @white;
                             font-family: @font-header;
                             &::after {
@@ -134,6 +134,18 @@
             margin-bottom: @measure;
         }
     }
+    .byline {
+        .by-author {
+            .author {
+                .url {
+                    font-size: 16px;
+                }
+            }
+        }
+        span.job-title {
+            display: none;
+        }
+    }
     @media (max-width: 769px) {
         flex-direction: column;
         border-bottom: 0;
@@ -177,7 +189,7 @@
                         &:not(.top-tag) {
                             color: @orange;
                             font-size: 48px;
-                            line-height: 3.8rem;
+                            line-height: 3.25rem;
                         }
                     }
                     p {
@@ -263,7 +275,7 @@
                         h5 {
                             a {
                                 font-size: 48px;
-                                line-height: 3.8rem;
+                                line-height: 3.25rem;
                             }
                         }
                     }
