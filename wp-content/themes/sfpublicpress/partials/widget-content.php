@@ -1,4 +1,7 @@
 <?php
+if ( ! isset( $podcast ) ) {
+	$podcast = false;
+}
 
 // the thumbnail image (if we're using one)
 if ( $podcast === true ) {
@@ -100,5 +103,5 @@ if ( $excerpt == 'num_sentences' ) {
 
 ?>
 
-<a class="view-more-link" href="<?php the_permalink( $topstory ); ?>">Full Story</a>
+<a class="view-more-link" href="<?php the_permalink(); ?>">Full Story</a>
 </div>
