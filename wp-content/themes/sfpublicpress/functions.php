@@ -20,6 +20,7 @@ function largo_child_require_files() {
 		'/inc/block-color-palette.php',
 		'/inc/navigation.php',
 		'/inc/metaboxes.php',
+		'/inc/image-remover.php',
 		// homepage
 		'/homepages/layout.php',
 		// widgets
