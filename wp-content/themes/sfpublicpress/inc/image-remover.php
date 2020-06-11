@@ -132,7 +132,7 @@ class SFPP_Image_Remover {
 					$id,
 					$maybe_clear
 				);
-				error_log(var_export( , true));
+				error_log(var_export( $log, true));
 			} else {
 				update_post_meta( $id, SFPP_Image_Remover::$meta_key, $maybe_clear );
 			}
