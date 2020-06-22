@@ -103,5 +103,4 @@ if ( $excerpt == 'num_sentences' ) {
 
 ?>
 
-<a class="view-more-link" href="<?php the_permalink(); ?>">Full Story</a>
 </div>
