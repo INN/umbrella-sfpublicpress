@@ -91,3 +91,21 @@ function sfpp_largo_custom_avatar( $avatar, $id_or_email, $args ) {
 	
 }
 add_filter( 'pre_get_avatar' , 'sfpp_largo_custom_avatar', 10 , 3 );
+
+/**
+ * Output a donate button from theme options
+ * used by default in the global nav area. 
+ * Overrides default largo_donate_button
+ * 
+ * Copied from Largo at https://github.com/INN/largo/blob/512da701664b329f2f92244bbe54880a6e146431/inc/nav-menus.php#L2-L16
+ *
+ * @since 1.0
+ */
+function largo_donate_button () {
+	if ( $donate_link = of_get_option( 'donate_link' ) ) {
+		printf('<button class="donate-btn PicoPlan"><i class="icon-heart"></i>%1$s</button> ',
+			esc_html( of_get_option( 'donate_button_text' ) )
+		);
+	}
+}
+	
