@@ -58,6 +58,9 @@
                     }
                 }
             }
+            .job-title {
+                display: none;
+            }
             .edit-link {
                 display: none;
             }
@@ -70,17 +73,20 @@
                         font-size: initial;
                         padding: 0;
                         margin: 0 20px 0 0!important;
+                        max-height: 34px!important;
+                        max-width: 34px!important;
+                        display: -webkit-inline-flex;
                         i {
                             color: white;
                             width: 34px;
-                            height: 34px;
+                            height: 32px;
                             border-radius: 50%;
                             border: 1px solid @orange;
                             background: @orange;
                             text-align: center;
-                            line-height: 34px;
+                            line-height: 32px;
                             vertical-align: middle;
-                            padding: 6.5px 7.5px;
+                            // padding: 6.5px 7.5px;
                             margin-right: 0;
                             margin-left: 0;
                             &:hover {
