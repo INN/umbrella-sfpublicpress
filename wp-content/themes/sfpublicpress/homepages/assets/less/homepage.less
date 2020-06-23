@@ -16,8 +16,8 @@
         margin: @measure 0;
         a {
             font-family: @font-header;
-            font-size: 54px;
-            line-height: 3.25rem;
+            font-size: 46px;
+            line-height: 2.25rem;
             color: @orange;
             &:hover {
                 text-decoration: none;
@@ -27,7 +27,8 @@
     }
     .excerpt {
         p {
-            font-size: 18px;
+            font-size: 16px;
+            line-height: 2rem;
         }
     }
     @media (max-width: 769px) {
@@ -77,15 +78,15 @@
                         margin-bottom: 0;
                         margin-top: 12px;
                         a {
-                            font-size: 26px;
-                            line-height: 2rem;
+                            font-size: 20px;
+                            line-height: 1rem;
                             color: @white;
                             font-family: @font-header;
                             &::after {
                                 content: "\f344";
                                 font-family: 'dashicons';
                                 margin-left: 0.5rem;
-                                vertical-align: top;
+                                vertical-align: middle;
                                 transition: margin-left 0.3s;
                             }
                             &:hover::after {
@@ -159,6 +160,11 @@
 }
 
 .secondary-featured-widget-area {
+    .widget {
+        li {
+            margin-bottom: 0;
+        }
+    }
     .widget-area {
         border-bottom: 0;
         .largo-recent-posts {
@@ -188,12 +194,12 @@
                     h5 {
                         &:not(.top-tag) {
                             color: @orange;
-                            font-size: 48px;
-                            line-height: 3.25rem;
+                            font-size: 40px;
+                            line-height: 3rem;
                         }
                     }
                     p {
-                        font-size: 18px;
+                        font-size: 16px;
                     }
                 }
             }
@@ -202,9 +208,14 @@
 }
 
 .bottom-widget-area {
+    .widget {
+        li {
+            margin-bottom: 0;
+        }
+    }
     .widget-area {
         .largo-recent-posts {
-            margin: 1.5rem 0;
+            margin: 0;
             display: grid;
                 box-sizing: border-box;
         
@@ -250,7 +261,7 @@
                 grid-auto-flow: row;
             .widgettitle {
                 .widget-title;
-                margin-bottom: @measure + 0.5rem;
+                margin-bottom: 0;
                 grid-area: title;
                 width: 100%;
             }
@@ -259,7 +270,6 @@
                 li {
                   box-sizing: border-box;
                   position: relative;
-                  margin-bottom: @measure;
         
                   &:nth-child( 1 ) {
                     grid-area: a;
@@ -275,8 +285,8 @@
                     .inner-widget-content {
                         h5 {
                             a {
-                                font-size: 48px;
-                                line-height: 3.25rem;
+                                font-size: 40px;
+                                line-height: 3rem;
                             }
                         }
                     }
@@ -314,11 +324,10 @@
             .morelink {
                 grid-area: more;
                 margin-left: @measure * 2;
-                margin-top: @measure;
                 width: 100%;
                 a {
                     .btn;
-                    padding: 15px 20px;
+                    padding: 10px 20px;
                 }
             }
             @media (max-width: 769px) {
@@ -361,7 +370,7 @@
             h3.orange {
                 color: @orange;
                 font-family: @font-header;
-                font-size: 48px;
+                font-size: 36px;
                 line-height:3.8rem;
             }
             p {

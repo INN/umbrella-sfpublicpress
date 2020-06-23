@@ -1,5 +1,5 @@
 .widget.largo-recent-posts {
-    margin: @measure + 1rem 0;
+    margin: 0;
     ul {
         li {
             h5 {
@@ -37,7 +37,7 @@
         justify-content: center;
         .widgettitle {
             text-transform: none;
-            font-size: 48px;
+            font-size: 36px;
             line-height: 3.8rem;
             padding: 0;
             color: @black;
@@ -51,6 +51,9 @@
         .promo-box-image {
             text-align: right;
             margin-left: @measure;
+            img {
+                max-width: 75%;
+            }
             @media (max-width: 769px) {
                 display: none;
             }
@@ -58,7 +61,7 @@
         p {
             color: @black;
             line-height: 1.8rem;
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 }
@@ -114,7 +117,7 @@
             h5 {
                 a {
                     font-family: @font-header;
-                    font-size: 28px;
+                    font-size: 20px;
                     line-height: 2rem;
                     color: @black;
                     &:hover {
@@ -165,11 +168,10 @@
         border-color: @black;
         .widgettitle {
             text-transform: none;
-            font-size: 28px;
-            line-height: 2.1rem;
+            font-size: 20px;
+            line-height: 2.25rem;
             padding: 0;
             color: @black;
-            margin-bottom: @measure;
         }
         p {
             color: @black;
@@ -185,7 +187,7 @@
                 color: @black;
                 text-transform: uppercase;
                 font-family: @font-header;
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 40px;
                 letter-spacing: 0.45px;
                 display: inline-block;
@@ -266,8 +268,8 @@
                 order: 3;
                 a {
                     font-family: @font-header;
-                    font-size: 26px!important;
-                    line-height: 2rem!important;
+                    font-size: 20px!important;
+                    line-height: 1.5rem!important;
                     text-transform: none!important;
                     .view-more-link();
                 }
