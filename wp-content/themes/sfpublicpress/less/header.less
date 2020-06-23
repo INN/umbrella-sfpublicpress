@@ -3,7 +3,7 @@
 @globalnav-text-hover: @white;
 @globalnav-background: @black;
 @globalnav-background-hover: @dark-orange;
-@globalnav-font-size: 16px;
+@globalnav-font-size: 14px;
 @globalnav-font: @font-header;
 
 
@@ -50,7 +50,6 @@
 	.input-append {
 		line-height: @navbarHeight - 8px;
 		border-bottom: 1px solid @globalnav-text-hover;
-		border-left: 1px solid @globalnav-text-hover;
 	}
 	input[type=text] {
 		box-shadow: none;
@@ -69,7 +68,6 @@
 	.btn {
 		border: none;
 		margin-left: 2px;
-		border-left: 1px solid @globalnav-text-hover;
 		background-color: @globalnav-background;
 		color: @globalnav-text-hover;
 		font-family: @globalnav-font;
@@ -90,11 +88,11 @@
 		}
 	}
 }
-#header-search + .donate-btn {
+.global-nav .donate-btn {
 	margin-left: 0;
 	font-size: @globalnav-font-size;
-	border-left: 1px solid @globalnav-text;
-	border-right: 1px solid @globalnav-text;
+	border-left: none;
+	border-right: none;
 	border-top: 0;
 	border-bottom: 0;
 	background-color: @orange;
@@ -144,9 +142,6 @@
 				color: @blue;
 			}
 		}
-	}
-	li + li {
-		border-left: 1px solid @globalnav-text;
 	}
 	@media (max-width: 1070px) {
 		font-size: 16px;

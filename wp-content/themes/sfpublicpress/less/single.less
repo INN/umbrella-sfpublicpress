@@ -4,8 +4,8 @@
             margin: 0 0 @measure * 2!important;
             text-align: center;
             .entry-title {
-                font-size: 70px;
-                line-height: 5rem;
+                font-size: 46px;
+                line-height: 3.5rem;
                 margin-bottom: @measure;
                 padding-top: 0!important;
             }
@@ -43,7 +43,7 @@
         .byline {
             font-family: @font-header;
             color: @black;
-            font-size: 18px;
+            font-size: 16px;
             letter-spacing: 0.9px;
             line-height: 2rem;
             margin-bottom: @measure + 0.5rem;
@@ -52,6 +52,11 @@
             }
             .by-author {
                 margin: 0 1rem;
+                .author {
+                    .url {
+                        font-size: 16px;
+                    }
+                }
             }
             .job-title {
                 display: none;
@@ -132,6 +137,9 @@
         .sidebar-content-area {
             #sidebar {
                 width: 100%;
+                .widgettitle {
+                    font-size: 18px;
+                }
                 .sfpublicpress-podcasts {
                     ul {
                         display: block;
@@ -139,6 +147,9 @@
                             border-bottom: 1px solid @light-gray;
                             border-right: 0;
                             margin-bottom: @measure;
+                            .inner-widget-content {
+                                margin-bottom: 2rem;
+                            }
                         }
                     }
                 }
