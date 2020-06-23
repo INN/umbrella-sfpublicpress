@@ -24,6 +24,12 @@
                 color: @black;
             }
         }
+        @media (max-width: 769px) {
+            line-height: 2.25rem;
+            a {
+                font-size: 28px;
+            }
+        }
     }
     .excerpt {
         p {
@@ -196,6 +202,11 @@
                             color: @orange;
                             font-size: 40px;
                             line-height: 3rem;
+                            @media (max-width: 769px) {
+                                font-size: 24px;
+                                line-height: 2rem;
+                                margin: 0;
+                            }
                         }
                     }
                     p {
@@ -287,6 +298,11 @@
                             a {
                                 font-size: 40px;
                                 line-height: 3rem;
+                                @media (max-width: 769px) {
+                                    font-size: 24px;
+                                    line-height: 2rem;
+                                    margin: 0;
+                                }
                             }
                         }
                     }
@@ -377,6 +393,10 @@
                 font-size: 18px;
             }
             @media (max-width: 769px) {
+                h3.orange {
+                    font-size: 22px;
+                    line-height: 2rem;
+                }
                 img {
                     margin: 0 0 @measure;
                 }

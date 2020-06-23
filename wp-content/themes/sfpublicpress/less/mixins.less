@@ -2,7 +2,7 @@
     color: @white;
     background: @black;
     font-family: @font-header;
-    font-size: 16px;
+    font-size: 14px;
     line-height: @measure + 1rem;
     letter-spacing: 0.9px;
     text-transform: uppercase;
@@ -12,6 +12,14 @@
         background: @dark-orange;
         color: @white;
         text-decoration: none;
+    }
+    &.search-submit {
+        padding: 0 20px;
+        line-height: 2.15rem;
+        border: 0;
+        @media (max-width: 769px) {
+            padding: 0 5px;
+        }
     }
     &.btn-green {
         background: @green;
@@ -117,7 +125,7 @@
         }
     }
     @media (max-width: 769px) {
-        font-size: 48px;
+        font-size: 34px;
     }
 }
 
@@ -135,5 +143,11 @@
     }
     .edit-link {
         display: none;
+    }
+}
+
+hr {
+    @media (max-width: 769px) {
+        margin: 18px 0;
     }
 }
