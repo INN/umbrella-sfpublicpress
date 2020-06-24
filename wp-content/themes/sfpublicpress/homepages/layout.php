@@ -37,7 +37,27 @@ class SFPublicPress extends Homepage {
 			),
 		);
 		$options = array_merge( $defaults, $options );
+
+		if( is_home() ) {
+			add_action( 'pre_get_posts', array( 'SFPublicPress', 'sfpp_pre_get_posts__cats_home' ) );
+		}
+
 		$this->load( $options );
+	}
+
+	/**
+	 * Exclude all posts from the `cats_home` category from this homepage
+	 */
+	public static function sfpp_pre_get_posts__cats_home( $query ) {
+		if ( ! is_admin() & is_front_page() && is_home() ) {
+			$exclude = of_get_option( 'cats_home' );
+
+			if ( ! empty( $exclude ) ) {
+				$query->set( 'category__not_in', $exclude );
+			}
+		}
+
+		return $query;
 	}
 }
 
@@ -48,3 +68,4 @@ function sfpublicpress_homepage_layout() {
 	register_homepage_layout( 'SFPublicPress' );
 }
 add_action( 'init', 'sfpublicpress_homepage_layout' );
+
