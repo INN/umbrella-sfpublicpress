@@ -54,7 +54,6 @@ class SFPublicPress extends Homepage {
 
 			if ( ! empty( $exclude ) ) {
 				$query->set( 'category__not_in', $exclude );
-				error_log(var_export( $query->query_vars, true));
 			}
 		}
 
