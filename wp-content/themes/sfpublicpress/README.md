@@ -1,5 +1,13 @@
 # SFPP child theme
 
+Custom partials: many
+
+Shims of Largo functions:
+- subtitle metabox in inc/metaboxes.php
+
+Weird things:
+- inc/image-remover.php
+
 Navigation modifications:
 
 - [x] disable global nav via the constant `SHOW_GLOBAL_NAV`
