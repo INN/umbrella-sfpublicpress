@@ -16,9 +16,9 @@
 			</h2>
 
 			<div class="byline">
-                    <div class="byline-date"><?php echo get_the_date( 'm.d.Y', get_the_ID() ); ?></div>
+                    <div class="byline-date"><?php echo get_the_date( 'm.d.Y', $featured_post->ID ); ?></div>
                     <span class="sep"> | </span>
-                    <h5 class="byline"><?php largo_byline( true, true, get_the_ID() ); ?></h5>
+					<h5 class="byline"><?php largo_byline( true, true, $featured_post->ID ); ?></h5>
             </div>
 		</header>
 
