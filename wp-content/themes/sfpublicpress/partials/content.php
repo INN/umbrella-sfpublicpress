@@ -58,7 +58,7 @@ if ( $featured ) {
 		echo '<div class="' . $entry_classes . '">';
 
 		if ( largo_has_categories_or_tags() ) {
-			largo_maybe_top_term();
+			largo_maybe_top_term( array( 'post' => get_the_ID() ) );
 		}
 
 		if ( $show_thumbnail ) {

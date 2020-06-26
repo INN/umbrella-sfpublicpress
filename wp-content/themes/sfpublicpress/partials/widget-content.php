@@ -20,7 +20,7 @@ if ( $podcast === true ) {
             <?php
                 // The top term
                 if ( isset( $instance['show_top_term'] ) && $instance['show_top_term'] == 1 && largo_has_categories_or_tags() ) {
-                    largo_maybe_top_term();
+                    largo_maybe_top_term( array( 'post' => get_the_ID() ) );
                 }
             ?>
             <a href="<?php echo get_permalink(); ?>"><?php echo get_the_post_thumbnail( get_the_ID(), '60x60', $img_attr); ?></a>
@@ -35,7 +35,7 @@ if ( $podcast === true ) {
             <?php
                 // The top term
                 if ( isset( $instance['show_top_term'] ) && $instance['show_top_term'] == 1 && largo_has_categories_or_tags() ) {
-                    largo_maybe_top_term();
+                    largo_maybe_top_term( array( 'post' => get_the_ID() ) );
                 }
             ?>
             <a href="<?php echo get_permalink(); ?>"><?php echo get_the_post_thumbnail( get_the_ID(), 'post-thumbnail', $img_attr); ?></a>
@@ -49,7 +49,7 @@ if ( $podcast === true ) {
             <?php
                 // The top term
                 if ( isset( $instance['show_top_term'] ) && $instance['show_top_term'] == 1 && largo_has_categories_or_tags() ) {
-                    largo_maybe_top_term();
+                    largo_maybe_top_term( array( 'post' => get_the_ID() ) );
                 }
             ?>
             <a href="<?php echo get_permalink(); ?>"><?php echo get_the_post_thumbnail( get_the_ID(), 'two-third-full', $img_attr); ?></a>
