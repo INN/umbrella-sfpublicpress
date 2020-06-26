@@ -9,7 +9,7 @@
 	<div class="post-image-top-term-container">
         <?php
             // The top term
-            largo_maybe_top_term();
+            largo_maybe_top_term( array( 'post' => $topstory->ID ) );
         ?>
 		<a class="img" href="<?php echo esc_attr( get_permalink( $topstory ) ); ?>"><?php echo get_the_post_thumbnail( $topstory, 'large' ); ?></a>
     </div>
