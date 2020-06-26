@@ -108,4 +108,13 @@ function largo_donate_button () {
 		);
 	}
 }
-	
+
+/**
+ * Add support for post excerpts to the 'page' post type
+ *
+ * @link https://www.wp-code.com/wordpress-snippets/add-excerpts-to-wordpress-pages/
+ * @link https://github.com/INN/umbrella-sfpublicpress/issues/121
+ */
+add_action( 'init', function() {
+	add_post_type_support( 'page', 'excerpt' );
+});
