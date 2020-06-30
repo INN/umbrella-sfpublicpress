@@ -120,6 +120,7 @@ add_action( 'init', function() {
  * navis slideshow/lightbox CSS or JS is loaded into the theme
  * 
  * @see https://github.com/INN/largo/blob/590181982d22a5444eb3c5ccca58ea8b56db12f7/inc/enqueue.php#L80-L122
+ * @see https://github.com/INN/umbrella-sfpublicpress/issues/139
  * 
  * Will eventually be added back once a design is approved by SFPP
  */
