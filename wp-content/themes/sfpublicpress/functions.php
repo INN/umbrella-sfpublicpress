@@ -127,3 +127,65 @@ add_action( 'init', function() {
 function largo_gallery_enqueue() {
 	return;
 }
+
+/**
+ * Creates a redirect using the redirection plugin if a page
+ * is loaded that starts with /category/ or /tag/ and ends up throwing a 404.
+ * 
+ * @required https://wordpress.org/plugins/redirection/
+ * @see https://redirection.me/developer/rest-api/#api-Redirect-CreateRedirect
+ * @see https://github.com/INN/umbrella-sfpublicpress/issues/97
+ */
+function sfpp_category_tag_404_override() {
+
+    global $wp_query;
+
+    if( is_404() && ! is_admin() ) {
+
+		// find out if the user is trying to load a term archive
+		$maybe_term = explode( '/', $_SERVER['REQUEST_URI'] );
+
+		// if category or tag is the 1st index in the uri, we can continue
+		if( 'category' == $maybe_term[1] || 'tag' == $maybe_term[1] ) {
+
+			// make sure all of our expected redirection stuff is available to use
+			if( class_exists( 'Red_Item' ) && file_exists( WP_PLUGIN_DIR . '/redirection/models/group.php' ) ) {
+
+				// include file that's needed because ??? 
+				// plugin author states it needs included: https://wordpress.org/support/topic/red_itemcreate-throws-error/
+				include_once WP_PLUGIN_DIR . '/redirection/models/group.php';
+
+				// let's make sure the user doesn't actually experience a 404
+				status_header( 301 );
+				$wp_query->is_404=false;
+
+				// set up all of our relevant info we need to creat the redirect in the plugin
+				$redirect_info = array(
+					'url' => $_SERVER['REQUEST_URI'],
+					'action_code' => 301,
+					'match_data' => array(
+						'flag_query' => 'pass'
+					),
+					'action_data' => array( 
+						'url' => '/categories/' 
+					),
+					'action_type' => 'url',
+					'match_type' => 'url',
+					'title' => $maybe_term[2],
+					'group_id' => 1
+				);
+
+				// actually create the redirect
+				Red_Item::create( $redirect_info );
+
+				// redirect to where we want to go
+				wp_safe_redirect( '/categories/' );
+			
+			}
+
+		}
+		
+	}
+	
+}
+add_filter('template_redirect', 'sfpp_category_tag_404_override' );
