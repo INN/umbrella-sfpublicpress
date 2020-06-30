@@ -31,10 +31,6 @@ function largo_child_require_files() {
     );
 	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-	if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
-		$includes[] = '/inc/gravityforms/events-calendar.php';
-	}
-
 	foreach ( $includes as $include ) {
 		require_once( get_stylesheet_directory() . $include );
 	}
