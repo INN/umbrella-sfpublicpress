@@ -142,7 +142,13 @@ function sfpp_after_post_content() {
 	global $post;
 
 	if( get_post_meta( $post->ID, 'wpcf-shirttail' ) ) {
-		echo get_post_meta( $post->ID, 'wpcf-shirttail', true );
+		printf(
+			'<div class="wpcf-shirttail">
+				<hr/>
+				%1$s
+			</div>',
+			get_post_meta( $post->ID, 'wpcf-shirttail', true )
+		);
 	}
 
 }
