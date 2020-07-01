@@ -182,7 +182,7 @@ function sfpp_category_tag_404_override() {
 				include_once WP_PLUGIN_DIR . '/redirection/models/group.php';
 
 				// let's make sure the user doesn't actually experience a 404
-				status_header( 301 );
+				status_header( 303 );
 				$wp_query->is_404=false;
 
 				// set up all of our relevant info we need to creat the redirect in the plugin
