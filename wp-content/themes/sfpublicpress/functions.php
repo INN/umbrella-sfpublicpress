@@ -127,3 +127,29 @@ add_action( 'init', function() {
 function largo_gallery_enqueue() {
 	return;
 }
+
+/**
+ * Display the custom "shirttail" field under the post content if it exists
+ * using the 'largo_after_post_content' hook
+ * 
+ * Going forward the "shirttail" content will be added into posts via blocks, 
+ * but this is a workaround for older posts where this field was imported
+ * 
+ * @see https://github.com/INN/umbrella-sfpublicpress/issues/144
+ */
+function sfpp_after_post_content() {
+	
+	global $post;
+
+	if( get_post_meta( $post->ID, 'wpcf-shirttail' ) ) {
+		printf(
+			'<div class="wpcf-shirttail">
+				<hr/>
+				%1$s
+			</div>',
+			get_post_meta( $post->ID, 'wpcf-shirttail', true )
+		);
+	}
+
+}
+add_action( 'largo_after_post_content', 'sfpp_after_post_content' );
