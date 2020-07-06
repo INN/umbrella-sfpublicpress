@@ -176,26 +176,30 @@
         .largo-recent-posts {
             ul {
                 li {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    @media (max-width: 769px) {
+                        flex-direction: column;
+                    }
                     .post-image-top-term-container {
                         @media (min-width: 770px) {
-                            float: left;
-                            margin-right: 5%;
-                        }
-                        @media (min-width: 1000px) {
-                            max-width: 50%;
+                            width: 46%;
+                            margin-bottom: 0;
                         }
                         a {
                             width: 100%;
                             img {
                                 width: 100%;
-                                @media (max-width: 999px) and (min-width: 770px) {
-                                    max-width: 300px;
-                                }
                             }
                         }
                     }
                     .inner-widget-content {
                         overflow: hidden;
+                        @media (min-width: 770px) {
+                            width: 51%;
+                        }
                     }
                     h5 {
                         &:not(.top-tag) {
