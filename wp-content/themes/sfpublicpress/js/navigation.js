@@ -340,7 +340,7 @@
         });
   
         // Secondary nav items in the drop-down
-        navbar.on('touchstart.toggleNav click.toggleNav', '.nav-shelf .caret', function(event) {
+        navbar.on('touchstart.toggleNav click.toggleNav', '.caret', function(event) {
           // prevents this from running when the sandwich menu button is not visible:
           // prevents this from running when we're not doing the "phone" menu
           if (toggleButton.css('display') == 'none') {
