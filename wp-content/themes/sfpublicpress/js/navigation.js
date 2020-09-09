@@ -326,13 +326,10 @@
           if (event.type == 'touchstart') {
             toggleButton.off('click.toggleNav');
           }
-  
+
           navbar.toggleClass('open');
           $('html').addClass('nav-open');
-          navbar.find('.nav-shelf').css({
-            top: self.mainNavEl.position().top + self.mainNavEl.outerHeight()
-          });
-  
+
           if (!navbar.hasClass('open')) {
             navbar.find('.nav-shelf li.open').removeClass('open');
             $('html').removeClass('nav-open');
