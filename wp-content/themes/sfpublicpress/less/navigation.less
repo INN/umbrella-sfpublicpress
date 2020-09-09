@@ -72,6 +72,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+		margin-bottom: 0;
 		display: block;
 		padding: 1em;
 		border: none;
@@ -93,6 +94,20 @@
 			background: @black;
 		}
 
+		// increase tap targets to big-enough size
+		.caret::before {
+			border-top-color: @white;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.caret{
+			display: inline-block;
+			width: 44px;
+			height: 44px;
+		}
+		li > a {
+			line-height: 44px;
+		}
 
 		.nav {
 			display: block;
@@ -100,17 +115,34 @@
 			&:only-of-type {
 				padding: 10px 0;
 			}
+			> li:first-of-type {
+				margin-top: 40px;
+				border-top: 1px solid @gray;
+			}
+			.dropdown-menu {
+				padding: 0;
+				a {
+					color: @orange;
+				}
+			}
 			li {
 				float: none;
 				border-bottom: 1px solid @gray;
-				&:first-of-type {
-					margin-top: 40px;
-					border-top: 1px solid @gray;
+				&::last-of-type {
+					border-bottom: none;
 				}
 				a {
 					color: @white;
-					&:hover {
+				}
+				.caret::before {
+					border-top-color: @white;
+				}
+				&:hover {
+					> a {
 						color: @dark-orange;
+					}
+					.caret::before {
+						border-top-color: @dark-orange;
 					}
 				}
 			}
