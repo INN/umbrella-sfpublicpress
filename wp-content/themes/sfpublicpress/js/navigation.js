@@ -318,7 +318,7 @@
         var toggleButton = $(this),
           // the parent nav of the hamburger
           navbar = toggleButton.closest('.navbar');
-  
+
         // Support both touch and click events
         // The .toggleNav here is namespacing the click event: https://api.jquery.com/on/#event-names
         toggleButton.on('touchstart.toggleNav click.toggleNav', function(event) {
@@ -326,46 +326,43 @@
           if (event.type == 'touchstart') {
             toggleButton.off('click.toggleNav');
           }
-  
+
           navbar.toggleClass('open');
           $('html').addClass('nav-open');
-          navbar.find('.nav-shelf').css({
-            top: self.mainNavEl.position().top + self.mainNavEl.outerHeight()
-          });
-  
+
           if (!navbar.hasClass('open')) {
-            navbar.find('.nav-shelf li.open').removeClass('open');
+            navbar.find('li.open').removeClass('open');
             $('html').removeClass('nav-open');
             self.navOverflow();
           }
-  
+
           return false;
         });
-  
+
         // Secondary nav items in the drop-down
-        navbar.on('touchstart.toggleNav click.toggleNav', '.nav-shelf .caret', function(event) {
+        navbar.on('touchstart.toggleNav click.toggleNav', '.caret', function(event) {
           // prevents this from running when the sandwich menu button is not visible:
           // prevents this from running when we're not doing the "phone" menu
           if (toggleButton.css('display') == 'none') {
             return false;
           }
-  
+
           if (event.type == 'touchstart') {
-            navbar.off('click.toggleNav', '.nav-shelf .dropdown-toggle');
+            navbar.off('click.toggleNav', '.dropdown-toggle');
           }
-  
+
           var li = $(event.target).closest('li');
-  
+
           if (!li.hasClass('open')) {
-            navbar.find('.nav-shelf li.open').removeClass('open');
+            navbar.find('li.open').removeClass('open');
           }
-  
+
           li.toggleClass('open');
           return false;
         });
       });
     };
-  
+
     /**
      * On window resize, make sure nav doesn't overflow.
      * Put stuff in the overflow nav if it does.
