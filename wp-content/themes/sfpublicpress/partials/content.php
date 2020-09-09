@@ -13,7 +13,7 @@ $args = array (
 	'values' => get_post_custom( $post->ID ),
 
 	// this should be filtered in the event of a term-specific archive
-	'featured' => has_term( 'homepage-featured', 'prominence' ),
+	'featured' => false,
 
 	// $show_thumbnail does not control whether or not the thumbnail is displayed;
 	// it controls whether or not the thumbnail is displayed normally.
