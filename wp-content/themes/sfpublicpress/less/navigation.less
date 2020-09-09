@@ -66,6 +66,16 @@
 		}
 		overflow-y: scroll; // needed for long menus on smaller screens
 	}
+	// increase tap targets to big-enough size
+	.caret::before {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.caret{
+		display: inline-block;
+		width: 44px;
+		height: 44px;
+	}
 
 	&.open {
 		position: absolute;
@@ -98,13 +108,6 @@
 		// increase tap targets to big-enough size
 		.caret::before {
 			border-top-color: @white;
-			display: inline-block;
-			vertical-align: middle;
-		}
-		.caret{
-			display: inline-block;
-			width: 44px;
-			height: 44px;
 		}
 		li > a {
 			line-height: 44px;
